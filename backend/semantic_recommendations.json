@@ -1,0 +1,142 @@
+{
+  "Delphi Method": [
+    "Context and Actor Analysis",
+    "Multi-Stakeholder Discussion Group",
+    "Scenario Planning"
+  ],
+  "Backcasting": [
+    "Intervention Logic Mapping",
+    "Delphi Method",
+    "Most Significant Change"
+  ],
+  "Design Thinking": [
+    "Systemic Design",
+    "Idea Tree",
+    "Tell Your Story by Means of an Object"
+  ],
+  "Emancipatory Boundary Critique": [
+    "Risk & Equity Matrix",
+    "Critical Systems Heuristics (CSH)",
+    "Value and Assumption Mapping"
+  ],
+  "Most Significant Change": [
+    "Intervention Logic Mapping",
+    "Tell Your Story by Means of an Object",
+    "Context and Actor Analysis"
+  ],
+  "Multi-Stakeholder Discussion Group": [
+    "Context and Actor Analysis",
+    "Value and Assumption Mapping",
+    "Delphi Method"
+  ],
+  "Nomadic Concepts": [
+    "Value and Assumption Mapping",
+    "Tell Your Story by Means of an Object",
+    "Idea Tree"
+  ],
+  "Outcome Spaces Framework": [
+    "Evaluation H",
+    "Risk & Equity Matrix",
+    "Intervention Logic Mapping"
+  ],
+  "Research Marketplace": [
+    "Systemic Design",
+    "Context and Actor Analysis",
+    "COLLAB Game"
+  ],
+  "Scenario Integration": [
+    "Scenario Planning",
+    "Value and Assumption Mapping",
+    "Systemic Design"
+  ],
+  "Scenario Planning": [
+    "Scenario Integration",
+    "Value and Assumption Mapping",
+    "Delphi Method"
+  ],
+  "Soft Systems Methodology": [
+    "Systemic Design",
+    "Critical Systems Heuristics (CSH)",
+    "Value and Assumption Mapping"
+  ],
+  "Storywall": [
+    "Tell Your Story by Means of an Object",
+    "Scenario Integration",
+    "Value and Assumption Mapping"
+  ],
+  "Tell Your Story by Means of an Object": [
+    "Design Thinking",
+    "Value and Assumption Mapping",
+    "Most Significant Change"
+  ],
+  "Context and Actor Analysis": [
+    "NetMap",
+    "Multi-Stakeholder Discussion Group",
+    "3 Circle Model for Actor Constellations"
+  ],
+  "But Why Technique": [
+    "Value and Assumption Mapping",
+    "Soft Systems Methodology",
+    "Most Significant Change"
+  ],
+  "COLLAB Game": [
+    "Value and Assumption Mapping",
+    "Research Marketplace",
+    "Tell Your Story by Means of an Object"
+  ],
+  "Evaluation H": [
+    "Outcome Spaces Framework",
+    "Intervention Logic Mapping",
+    "Value and Assumption Mapping"
+  ],
+  "Idea Tree": [
+    "Design Thinking",
+    "Intervention Logic Mapping",
+    "Systemic Design"
+  ],
+  "Joint Fact Finding": [
+    "Scenario Integration",
+    "Context and Actor Analysis",
+    "Value and Assumption Mapping"
+  ],
+  "NetMap": [
+    "Context and Actor Analysis",
+    "3 Circle Model for Actor Constellations",
+    "Delphi Method"
+  ],
+  "Rich Picture": [
+    "Idea Tree",
+    "Context and Actor Analysis",
+    "NetMap"
+  ],
+  "Risk & Equity Matrix": [
+    "Value and Assumption Mapping",
+    "Intervention Logic Mapping",
+    "Outcome Spaces Framework"
+  ],
+  "3 Circle Model for Actor Constellations": [
+    "Context and Actor Analysis",
+    "Intervention Logic Mapping",
+    "NetMap"
+  ],
+  "Systemic Design": [
+    "Design Thinking",
+    "Soft Systems Methodology",
+    "Tell Your Story by Means of an Object"
+  ],
+  "Value and Assumption Mapping": [
+    "Intervention Logic Mapping",
+    "Context and Actor Analysis",
+    "Multi-Stakeholder Discussion Group"
+  ],
+  "Critical Systems Heuristics (CSH)": [
+    "Value and Assumption Mapping",
+    "Soft Systems Methodology",
+    "Risk & Equity Matrix"
+  ],
+  "Intervention Logic Mapping": [
+    "Most Significant Change",
+    "Context and Actor Analysis",
+    "Value and Assumption Mapping"
+  ]
+}

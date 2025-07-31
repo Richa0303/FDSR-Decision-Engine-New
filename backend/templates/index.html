@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Design Insight Assistant</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/vis-network/styles/vis-network.css" rel="stylesheet">
+  <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f7f6fb;
+      margin: 0;
+      padding: 0;
+    }
+    .topbar {
+      background-color: #6a4fa3;
+      color: white;
+      padding: 1rem 2rem;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      background: white;
+      padding: 24px;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.07);
+    }
+    .chat {
+      max-height: 500px;
+      overflow-y: auto;
+      margin-bottom: 1rem;
+      padding-right: 10px;
+    }
+    .chat-message {
+      margin: 12px 0;
+      padding: 14px 20px;
+      border-radius: 20px;
+      max-width: 80%;
+      line-height: 1.6;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+    .user {
+      background-color: #e7dcf9;
+      align-self: flex-end;
+      margin-left: auto;
+    }
+    .bot {
+      background-color: #f2edf9;
+      align-self: flex-start;
+      margin-right: auto;
+    }
+    .input-area {
+      display: flex;
+      margin-top: 1rem;
+    }
+    input[type="text"] {
+      flex-grow: 1;
+      padding: 14px;
+      font-size: 16px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #a287c4;
+      color: white;
+      font-weight: bold;
+      padding: 14px 18px;
+      border: none;
+      border-radius: 10px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #8b6ab2;
+    }
+    .tags {
+      margin-top: 1rem;
+      text-align: center;
+    }
+    .tags button {
+      background-color: #ece5f5;
+      color: #4e3c73;
+      font-weight: 500;
+      margin: 6px;
+      border: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .tags button:hover {
+      background-color: #d7c9eb;
+    }
+    .method-card {
+      background-color: #f8f5fc;
+      border-left: 5px solid #a287c4;
+      padding: 20px;
+      border-radius: 12px;
+      margin: 15px 0;
+    }
+    .expand-toggle, .second-expand-toggle {
+      color: #6a4fa3;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-block;
+      margin-top: 10px;
+      transition: color 0.3s ease;
+    }
+    .expand-toggle:hover, .second-expand-toggle:hover {
+      color: #4e3c73;
+    }
+    .expandable, .second-expandable {
+      transition: all 0.3s ease;
+      overflow: hidden;
+    }
+    .method-button {
+      background-color: #a287c4;
+      color: white;
+      margin: 6px 8px 6px 0;
+      padding: 8px 14px;
+      border: none;
+      border-radius: 14px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+    .method-button:hover {
+      background-color: #8b6ab2;
+    }
+    #method-graph-modal {
+      position: fixed;
+      top: 5%;
+      left: 50%;
+      transform: translate(-50%, 0);
+      width: 75%;
+      height: 80%;
+      background: white;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+      z-index: 9999;
+      padding: 20px;
+      display: none;
+    }
+    #network {
+      height: 100%;
+    }
+    .graph-button {
+      display: inline-block;
+      background-color: #8b6ab2;
+      color: white;
+      padding: 10px 16px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .graph-button:hover {
+      background-color: #6a4fa3;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">Design Insight Assistant</div>
+  <div class="container">
+    <div class="chat" id="chatBox">
+      <div class="chat-message bot">Welcome! Ask about any design method (e.g., “Delphi Method”) or click a phase below.</div>
+    </div>
+    <div class="input-area">
+      <input type="text" id="userInput" placeholder="Ask about a method or phase...">
+      <button onclick="sendMessage()">Send</button>
+    </div>
+    <div class="tags">
+      <button onclick="sendTag('problem_framing')">Problem Framing</button>
+      <button onclick="sendTag('implementation')">Implementation</button>
+      <button onclick="sendTag('evaluation')">Evaluation</button>
+      <button onclick="sendTag('conclusion')">Conclusion</button>
+      <button onclick="sendTag('all')">All Methods</button>
+    </div>
+  </div>
+  <div id="method-graph-modal">
+    <div id="network"></div>
+    <div style="text-align: right; margin-top: 10px;">
+      <button class="graph-button" onclick="closeModal()">Close</button>
+    </div>
+  </div>
+  <script>
+    function appendMessage(text, sender) {
+      const chatBox = document.getElementById("chatBox");
+      const div = document.createElement("div");
+      div.className = "chat-message " + sender;
+      div.innerHTML = text;
+      chatBox.appendChild(div);
+      chatBox.scrollTop = chatBox.scrollHeight;
+
+      const visButton = div.querySelector(".graph-button[data-method]");
+      if (visButton) {
+        visButton.onclick = () => {
+          const method = visButton.dataset.method;
+          const similar = JSON.parse(visButton.dataset.similar);
+          showRadialMindMap(method, similar);
+        };
+      }
+
+      const toggles = div.querySelectorAll('.expand-toggle');
+      toggles.forEach(toggle => {
+        toggle.onclick = () => toggleExpand(toggle);
+      });
+
+      const innerToggles = div.querySelectorAll('.second-expand-toggle');
+      innerToggles.forEach(toggle => {
+        toggle.onclick = () => toggleInnerExpand(toggle);
+      });
+    }
+
+    function sendMessage() {
+      const input = document.getElementById("userInput");
+      const message = input.value.trim();
+      if (!message) return;
+      appendMessage(message, "user");
+      fetch("/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message })
+      })
+      .then(res => res.json())
+      .then(data => appendMessage(data.reply, "bot"));
+      input.value = "";
+    }
+
+    function sendTag(phase) {
+      appendMessage(phase.replace("_", " "), "user");
+      fetch("/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: phase })
+      })
+      .then(res => res.json())
+      .then(data => appendMessage(data.reply, "bot"));
+    }
+
+    function sendMethod(title) {
+      appendMessage(title, "user");
+      fetch("/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: title })
+      })
+      .then(res => res.json())
+      .then(data => appendMessage(data.reply, "bot"));
+    }
+
+    function closeModal() {
+      document.getElementById("method-graph-modal").style.display = "none";
+    }
+
+    function showRadialMindMap(methodTitle, similar) {
+      const nodes = [{ id: 1, label: methodTitle, color: "#8e44ad", font: { size: 18, color: '#fff' } }];
+      const edges = [];
+      let nodeId = 2;
+      const idMap = { [methodTitle]: 1 };
+
+      similar.forEach(sim => {
+        idMap[sim.title] = nodeId;
+        nodes.push({
+          id: nodeId,
+          label: sim.title,
+          color: sim.score == null ? "#d1c4e9" : sim.score > 0.6 ? "#e1bee7" : sim.score > 0.5 ? "#d1c4e9" : "#ede7f6",
+          font: { size: 14, color: '#333' },
+          title: `Click to explore: ${sim.title}`
+        });
+        edges.push({
+          from: 1,
+          to: nodeId,
+          label: sim.score == null ? "expert" : `sim: ${sim.score.toFixed(2)}`,
+          arrows: 'to',
+          width: sim.score == null ? 2 : Math.max(1, sim.score * 8),
+          font: { align: 'middle', size: 12, color: '#555' },
+          color: { color: '#888', highlight: '#333' }
+        });
+        nodeId++;
+      });
+
+      const data = { nodes: new vis.DataSet(nodes), edges: new vis.DataSet(edges) };
+      const options = {
+        layout: { hierarchical: false },
+        physics: {
+          enabled: true,
+          barnesHut: {
+            gravitationalConstant: -2000,
+            centralGravity: 0.3,
+            springLength: 180,
+            damping: 0.7
+          }
+        },
+        nodes: { shape: 'dot', size: 20, borderWidth: 2 },
+        edges: { smooth: true, shadow: false },
+        interaction: { dragNodes: true, zoomView: true, hover: true }
+      };
+
+      const container = document.getElementById("network");
+      const network = new vis.Network(container, data, options);
+
+      network.on("click", function (params) {
+        const nodeId = params.nodes[0];
+        if (nodeId && nodeId !== 1) {
+          const clickedMethod = nodes.find(n => n.id === nodeId);
+          if (clickedMethod) {
+            closeModal();
+            sendMethod(clickedMethod.label);
+          }
+        }
+      });
+
+      document.getElementById("method-graph-modal").style.display = "block";
+    }
+
+    function toggleExpand(el) {
+      const content = el.nextElementSibling;
+      if (content.style.display === "none" || content.style.display === "") {
+        content.style.display = "block";
+        el.textContent = "Hide steps";
+      } else {
+        content.style.display = "none";
+        el.textContent = "Learn more...";
+      }
+    }
+
+    function toggleInnerExpand(el) {
+      const details = el.nextElementSibling;
+      if (details.style.display === "none" || details.style.display === "") {
+        details.style.display = "block";
+        el.textContent = "Hide extra info";
+      } else {
+        details.style.display = "none";
+        el.textContent = "More info...";
+      }
+    }
+  </script>
+</body>
+</html>

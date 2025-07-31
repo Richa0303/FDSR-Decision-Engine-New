@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Transdisciplinary Chatbot</title>
+</head>
+<body>
+  <h1>Ask about transdisciplinary methods:</h1>
+  <input type="text" id="userInput" placeholder="Type your question here">
+  <button onclick="sendMessage()">Ask</button>
+  <pre id="responseBox"></pre>
+
+  <script>
+    async function sendMessage() {
+      const input = document.getElementById("userInput").value;
+      const res = await fetch("/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: input })
+      });
+      const data = await res.json();
+      const box = document.getElementById("responseBox");
+      if (data.error) {
+        box.innerText = "❌ " + data.error;
+      } else {
+        box.innerText = `✅ ${data.title}\n📌 ${data.description}\n📋 Steps:\n` +
+          data.steps.map(s => "👉 " + s).join("\n") + `\n🔗 Source: ${data.source}`;
+      }
+    }
+  </script>
+</body>
+</html>
