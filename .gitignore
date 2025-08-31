@@ -1,0 +1,8 @@
+# Ignore Python virtual environments
+env/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pkl
+*.ipynb_checkpoints/
