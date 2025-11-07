@@ -23,10 +23,8 @@ faiss.index*
 faiss*.bin
 *.ipynb_checkpoints/
 
-# ---- Data you likely DON'T want in git (keep your small JSONs) ----
 data/*.zip
 data/*.tar*
 data/*.7z
 
-# Optional: if you later decide to keep BEIR JSON via LFS instead:
 # backend/data_beir_fiqa.json
