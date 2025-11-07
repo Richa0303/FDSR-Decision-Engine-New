@@ -1,0 +1,35 @@
+qid	query	intent	seed	topk	answers
+SML01	similar to Delphi Method	SML	Delphi Method	5	Joint Fact Finding;Toolbox dialogue approach;Evaluation Matrix;Design Thinking;Three types of knowledge tool
+SML02	similar to Design Thinking	SML	Design Thinking	5	Idea Tree;Rich Picture;Joint Fact Finding;Scenario Planning;Research Marketplace
+SML03	similar to Actor Constellation	SML	Actor Constellation	5	Context and Actor Analysis;NetMap;3 Circle Model for Actor Constellations;Functional-dynamic stakeholder involvement;Risk & Equity Matrix
+SML04	similar to Emancipatory Boundary Critique	SML	Emancipatory Boundary Critique	5	Toolbox dialogue approach;Three types of knowledge tool;Risk & Equity Matrix;Soft systems methodology;Joint Fact Finding
+SML05	similar to Most Significant Change (MSC) Technique	SML	Most Significant Change (MSC) Technique	5	Outcome Harvesting;Evaluation H;Learning History;Group Reflection;Storywall
+SML06	similar to Soft systems methodology	SML	Soft systems methodology	5	Rich Picture;Context and Actor Analysis;Process Mapping (Retrospective);Evaluation Matrix;Idea Tree
+SML07	similar to Give-and-take matrix	SML	Give-and-take matrix	5	Research Marketplace;Multi-Stakeholder Discussion Group;Functional-dynamic stakeholder involvement;Joint Fact Finding;Outcome spaces framework
+SML08	similar to Multi-Stakeholder Discussion Group	SML	Multi-Stakeholder Discussion Group	5	Research Marketplace;Toolbox dialogue approach;Joint Fact Finding;Group Reflection;Give-and-take matrix
+SML09	similar to Nomadic concepts	SML	Nomadic concepts	5	Toolbox dialogue approach;Three types of knowledge tool;Group Reflection;Storywall;Outcome spaces framework
+SML10	similar to Outcome spaces framework	SML	Outcome spaces framework	5	Theory of change;Evaluation Matrix;Process Mapping (Retrospective);Group Reflection;After Action Review
+SML11	similar to Research Marketplace	SML	Research Marketplace	5	Multi-Stakeholder Discussion Group;Give-and-take matrix;Group Reflection;Design Thinking;Joint Fact Finding
+SML12	similar to Scenario Planning	SML	Scenario Planning	5	Theory of change;Outcome spaces framework;Idea Tree;Risk & Equity Matrix;Joint Fact Finding
+SML13	similar to Storywall	SML	Storywall	5	Learning History;Group Reflection;After Action Review;Outcome Harvesting;Evaluation H
+SML14	similar to Toolbox dialogue approach	SML	Toolbox dialogue approach	5	Three types of knowledge tool;Nomadic concepts;Group Reflection;Emancipatory Boundary Critique;Soft systems methodology
+SML15	similar to Tell Your Story by Means of an Object	SML	Tell Your Story by Means of an Object	5	Group Reflection;Storywall;After Action Review;Learning History;Research Marketplace
+SML16	similar to Context and Actor Analysis	SML	Context and Actor Analysis	5	Actor Constellation;NetMap;3 Circle Model for Actor Constellations;Risk & Equity Matrix;Functional-dynamic stakeholder involvement
+SML17	similar to But Why Technique	SML	But Why Technique	5	Soft systems methodology;Idea Tree;Rich Picture;Context and Actor Analysis;Design Thinking
+SML18	similar to COLLAB Game	SML	COLLAB Game	5	Multi-Stakeholder Discussion Group;Research Marketplace;Group Reflection;Toolbox dialogue approach;Give-and-take matrix
+SML19	similar to Evaluation H	SML	Evaluation H	5	After Action Review;Outcome Harvesting;Learning History;Evaluation Matrix;Group Reflection
+SML20	similar to Idea Tree	SML	Idea Tree	5	Design Thinking;Scenario Planning;Soft systems methodology;Rich Picture;Outcome spaces framework
+SML21	similar to Joint Fact Finding	SML	Joint Fact Finding	5	Delphi Method;Multi-Stakeholder Discussion Group;Research Marketplace;Toolbox dialogue approach;Evaluation Matrix
+SML22	similar to NetMap	SML	NetMap	5	Context and Actor Analysis;Actor Constellation;3 Circle Model for Actor Constellations;Risk & Equity Matrix;Functional-dynamic stakeholder involvement
+SML23	similar to Rich Picture	SML	Rich Picture	5	Soft systems methodology;Idea Tree;Context and Actor Analysis;Design Thinking;Process Mapping (Retrospective)
+SML24	similar to Risk & Equity Matrix	SML	Risk & Equity Matrix	5	Context and Actor Analysis;NetMap;Evaluation Matrix;Theory of change;Emancipatory Boundary Critique
+SML25	similar to 3 Circle Model for Actor Constellations	SML	3 Circle Model for Actor Constellations	5	Actor Constellation;Context and Actor Analysis;NetMap;Functional-dynamic stakeholder involvement;Risk & Equity Matrix
+SML26	similar to Theory of change	SML	Theory of change	5	Outcome spaces framework;Evaluation Matrix;Process Mapping (Retrospective);Outcome Harvesting;Design Thinking
+SML27	similar to After Action Review	SML	After Action Review	5	Group Reflection;Storywall;Evaluation H;Learning History;Process Mapping (Retrospective)
+SML28	similar to Group Reflection	SML	Group Reflection	5	After Action Review;Storywall;Learning History;Evaluation H;Research Marketplace
+SML29	similar to Outcome Harvesting	SML	Outcome Harvesting	5	Most Significant Change (MSC) Technique;Learning History;Evaluation H;Evaluation Matrix;Group Reflection
+SML30	similar to Learning History	SML	Learning History	5	Storywall;After Action Review;Outcome Harvesting;Group Reflection;Process Mapping (Retrospective)
+SML31	similar to Process Mapping (Retrospective)	SML	Process Mapping (Retrospective)	5	After Action Review;Learning History;Storywall;Evaluation Matrix;Soft systems methodology
+SML32	similar to Evaluation Matrix	SML	Evaluation Matrix	5	Outcome spaces framework;Theory of change;Process Mapping (Retrospective);Evaluation H;Joint Fact Finding
+SML33	similar to Three types of knowledge tool	SML	Three types of knowledge tool	5	Toolbox dialogue approach;Nomadic concepts;Emancipatory Boundary Critique;Group Reflection;Soft systems methodology
+SML34	similar to Functional-dynamic stakeholder involvement	SML	Functional-dynamic stakeholder involvement	5	Actor Constellation;Context and Actor Analysis;3 Circle Model for Actor Constellations;Give-and-take matrix;NetMap

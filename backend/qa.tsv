@@ -1,0 +1,41 @@
+qid	query	type	seed
+Q11	what is Actor Constellation	QA_DEF	Actor Constellation
+Q12	steps for Actor Constellation	QA_STEPS	Actor Constellation
+Q13	when to use Functional-dynamic stakeholder involvement	QA_WHEN	Functional-dynamic stakeholder involvement
+Q14	keywords for Functional-dynamic stakeholder involvement	QA_KEYWORDS	Functional-dynamic stakeholder involvement
+Q15	outputs and deliverables of Give-and-take matrix	QA_OUTPUTS	Give-and-take matrix
+Q16	steps for Give-and-take matrix	QA_STEPS	Give-and-take matrix
+Q17	what is Multi-Stakeholder Discussion Group	QA_DEF	Multi-Stakeholder Discussion Group
+Q18	risks and limitations of Multi-Stakeholder Discussion Group	QA_RISKS	Multi-Stakeholder Discussion Group
+Q19	keywords for Nomadic concepts	QA_KEYWORDS	Nomadic concepts
+Q20	which phase for Outcome spaces framework	QA_PHASE	Outcome spaces framework
+Q21	what is Research Marketplace	QA_DEF	Research Marketplace
+Q22	steps for Research Marketplace	QA_STEPS	Research Marketplace
+Q23	what is Scenario Planning	QA_DEF	Scenario Planning
+Q24	source for Scenario Planning	QA_SOURCE	Scenario Planning
+Q25	prerequisites for Soft systems methodology	QA_PREREQ	Soft systems methodology
+Q26	steps for Soft systems methodology	QA_STEPS	Soft systems methodology
+Q27	keywords for Soft systems methodology	QA_KEYWORDS	Soft systems methodology
+Q28	what is Storywall	QA_DEF	Storywall
+Q29	who participates in Storywall	QA_PARTICIPANTS	Storywall
+Q30	source for Toolbox dialogue approach	QA_SOURCE	Toolbox dialogue approach
+Q31	what is Toolbox dialogue approach	QA_DEF	Toolbox dialogue approach
+Q32	who participates in Toolbox dialogue approach	QA_PARTICIPANTS	Toolbox dialogue approach
+Q33	what is Tell Your Story by Means of an Object	QA_DEF	Tell Your Story by Means of an Object
+Q34	steps for Tell Your Story by Means of an Object	QA_STEPS	Tell Your Story by Means of an Object
+Q35	keywords for Context and Actor Analysis	QA_KEYWORDS	Context and Actor Analysis
+Q36	what is Context and Actor Analysis	QA_DEF	Context and Actor Analysis
+Q37	what is But Why Technique	QA_DEF	But Why Technique
+Q38	steps for But Why Technique	QA_STEPS	But Why Technique
+Q39	what is COLLAB Game	QA_DEF	COLLAB Game
+Q40	steps for COLLAB Game	QA_STEPS	COLLAB Game
+Q41	what is Evaluation H	QA_DEF	Evaluation H
+Q42	steps for Evaluation H	QA_STEPS	Evaluation H
+Q43	what is Idea Tree	QA_DEF	Idea Tree
+Q44	steps for Idea Tree	QA_STEPS	Idea Tree
+Q45	source for Joint Fact Finding	QA_SOURCE	Joint Fact Finding
+Q46	what is Joint Fact Finding	QA_DEF	Joint Fact Finding
+Q47	what is NetMap	QA_DEF	NetMap
+Q48	steps for NetMap	QA_STEPS	NetMap
+Q49	what is Rich Picture	QA_DEF	Rich Picture
+Q50	steps for Rich Picture	QA_STEPS	Rich Picture

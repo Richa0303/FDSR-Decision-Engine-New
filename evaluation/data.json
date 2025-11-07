@@ -570,6 +570,98 @@
     "The tool should not be used when all subprojects are extremely busy in research work and thus cannot absorb new ideas."
   ]
 },
+{
+  "title": "Scenario Integration Workshop",
+  "short_description": "A one-day, facilitated workshop that integrates qualitative visioning and quantitative, variable-based scenario planning to co-develop comparable future scenarios of a societal challenge.",
+  "long_description": "The scenario integration tool combines qualitative visions with quantitative impact variables to collaboratively draft possible future developments of a societal challenge. It is designed for heterogeneous groups (researchers across disciplines and societal actors) and runs as a structured one-day workshop. The process establishes a shared language (impact variables, values, consistency) and produces a coherent set of scenarios at the same level of abstraction for subsequent use in research and strategy.",
+  "keywords": [
+    "scenario planning",
+    "scenario integration",
+    "impact variables",
+    "projections",
+    "visions",
+    "future studies",
+    "co-production",
+    "workshop",
+    "interdisciplinary",
+    "stakeholders"
+  ],
+
+  "phase_membership": {
+    "problem_framing": 0.75,
+    "implementation": 0.50,
+    "evaluation": 0.20,
+    "conclusion": 0.35
+  },
+
+  "when_to_use": "Use when exploring possible futures (target knowledge) after the team has built sufficient systems knowledge and identified key system variables. Suited to transition-oriented projects needing a common platform and language to integrate qualitative and quantitative thought-styles.",
+  "how_it_works": "Facilitated one-day workshop. Participants define system boundaries, collect and structure impact variables with value ranges (projections), craft qualitative visions, and iteratively align both representations in plenary and subgroup sessions to produce a coherent, comparable set of scenarios.",
+
+  "steps": [
+    "Introduce objective, rationale, and core concepts of scenario planning.",
+    "Define system boundaries collectively.",
+    "Collect and roughly structure impact variables (with preparatory individual work).",
+    "Split into two balanced groups: (G1) structure variables and define value ranges; (G2) craft diverse qualitative visions (text/pictures).",
+    "Plenary exchange: present results and clarify questions.",
+    "Parallel iteration: G1 translates visions into variable-value scenarios, checking gaps/incongruences; G2 checks vision diversity against variable coverage and adds missing variables/values.",
+    "Plenary synthesis: agree adaptations to visions/variables; assess completeness and decide on any additional scenarios.",
+    "Follow-up: clarify ownership and next steps for finalising scenarios and how they will be used across subprojects."
+  ],
+
+  "inputs": [
+    "Pre-collected impact variables from participants",
+    "System boundary description",
+    "Room supporting subgroup work",
+    "Facilitation materials (cards, whiteboard, flipcharts, pens)",
+    "One or two experienced facilitators"
+  ],
+  "outputs": [
+    "A coherent set of comparable scenarios described with a shared set of impact variables and values",
+    "Agreement on who finalises the scenarios and how they will be used",
+    "Improved mutual understanding across the project team"
+  ],
+
+  "time_cost": "high",
+  "resource_cost": "medium",
+  "group_size": "8–25",
+  "facilitation": "high",
+
+  "participation": {
+    "participants": [
+      "Researchers from all subprojects (or representatives)",
+      "Relevant societal actors"
+    ],
+    "roles": [
+      "Facilitator(s): introduce scenario planning, moderate plenaries, support subgroups",
+      "Participants: define boundaries, supply variables, craft visions, iterate scenarios"
+    ],
+    "notes": "Societal actors should be comfortable with abstract language (impact variables/values) or provide narratives/visions collected separately."
+  },
+
+  "prerequisites": [
+    "Established systems knowledge of the challenge",
+    "Identified and preliminarily understood system variables",
+    "Participant availability for a full day"
+  ],
+
+  "limitations": [
+    "Not appropriate if there is unresolved disagreement on the aim/scope of building scenarios",
+    "Requires comfort with abstract, variable-based descriptions",
+    "Time- and facilitation-intensive"
+  ],
+
+  "thought_styles": {
+    "bridged": ["qualitative visioning", "quantitative modelling"],
+    "mechanism": "Shared platform (full-day joint work) and shared language (impact variables, values, consistency) enabling knowledge exchange across thought collectives."
+  },
+
+  "source": {
+    "name": "td-net toolbox",
+    "type": "method page",
+    "accessed": "2025-11-06"
+  }
+},
+
  
   {
     "title": "Scenario Planning",
@@ -650,6 +742,98 @@
   "facilitation_needed": true,
   "source": "go.transdisciplinarity.ch/SSM"
 }
+,{
+  "title": "Venn Diagram Tool",
+  "short_description": "A facilitated activity that uses overlapping topic circles to surface participants’ backgrounds, expertise, and interests, then clusters people around joint topics for follow-up work.",
+  "long_description": "The Venn diagram tool provides a structured way to map participants’ expertise and interests (e.g., disciplines, backgrounds, topical focus) against a small set of shared topics represented as overlapping circles. By physically or digitally positioning themselves, participants make diversity visible, identify overlaps, and form groups transparently. The tool is especially useful at a first workshop of a joint project to get to know each other and to propose joint topics for co-production.",
+  "keywords": [
+    "group formation",
+    "topic clustering",
+    "participant mapping",
+    "co-production",
+    "workshop",
+    "facilitation",
+    "interest mapping",
+    "stakeholder mapping",
+    "team setup",
+    "icebreaker"
+  ],
+
+  "phase_membership": {
+    "problem_framing": 0.85,
+    "implementation": 0.40,
+    "evaluation": 0.10,
+    "conclusion": 0.20
+  },
+
+  "when_to_use": "Use at the beginning of a joint project or first workshop to make expertise and interests visible and to propose joint topics and initial working groups for co-production.",
+  "how_it_works": "Facilitator agrees on 3+ core topics with the group, prepares a Venn diagram (printout/board or projected), explains the activity, and invites participants to place themselves using name cards, images, or post-its. After all positions are visible, the group proposes joint topics and forms heterogeneous groups, adjusting for required composition criteria as needed.",
+
+  "steps": [
+    "Clarify with project leads/participants which topics should be represented (e.g., food, health, environment).",
+    "Prepare the Venn diagram (large printout/board or projected slide) and decide how inputs will be recorded.",
+    "Explain the diagram and instructions at the start of the workshop or before breakouts.",
+    "Participants place themselves in one circle or overlaps using a marker/post-it/icon and briefly present their background and interests.",
+    "Facilitator leads a plenary to propose joint topics and initial groups; adjust clustering for desired heterogeneity (e.g., discipline, seniority, gender).",
+    "Confirm the list of groups and next steps (who convenes, immediate follow-up tasks)."
+  ],
+
+  "inputs": [
+    "Pre-agreed list of core topics (3+)",
+    "Large Venn diagram surface (printout/board) or slides for projection",
+    "Post-its or name cards / digital icons",
+    "Markers",
+    "Facilitator"
+  ],
+  "outputs": [
+    "A transparent clustering of participants around joint topics",
+    "Initial list of groups with participants and intended focus",
+    "Greater awareness of the diversity and overlaps in the room"
+  ],
+
+  "time_cost": "low",
+  "resource_cost": "low",
+  "group_size": "10–30",
+  "facilitation": "medium",
+
+  "participation": {
+    "participants": [
+      "All project researchers or their representatives",
+      "(Optional) relevant societal actors"
+    ],
+    "roles": [
+      "Facilitator: prepares topics/diagram, explains, moderates plenary and clustering",
+      "Participants: position themselves, briefly present expertise/interests, propose groups"
+    ],
+    "notes": "If specific composition criteria are important, discuss them openly during clustering."
+  },
+
+  "prerequisites": [
+    "Agreement on the 3+ core topics to visualize",
+    "Space or screen to display a large Venn diagram",
+    "Willingness of participants to introduce themselves briefly"
+  ],
+
+  "limitations": [
+    "Best for medium groups (10–30); less effective for very small or very large groups",
+    "Positions are coarse-grained; nuanced expertise may be simplified",
+    "Requires active facilitation to avoid dominant voices steering clustering"
+  ],
+
+  "thought_styles": {
+    "bridged": ["disciplinary expertise mapping", "pragmatic project scoping"],
+    "mechanism": "A shared visual ‘landscape’ where overlaps make common interests explicit, enabling transparent, heterogeneous group formation."
+  },
+
+  "source": {
+    "name": "td-net toolbox",
+    "citation": "Pearce B. (2020). Venn diagram tool. td-net toolbox for co-producing knowledge. Swiss Academies of Arts and Sciences.",
+    "url": "https://www.transdisciplinarity.ch/toolbox",
+    "doi": "10.5281/zenodo.3717541",
+    "accessed": "2025-11-06"
+  }
+}
+
 ,
  {
   "title": "Storywall",

@@ -1,3 +1,6 @@
+Got you — here’s your file exactly as you shared it (including the duplicates). You can paste this straight into VS Code:
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,19 +10,61 @@
   <link href="https://unpkg.com/vis-network/styles/vis-network.css" rel="stylesheet">
   <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
   <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      background: #f7f6fb;
-      margin: 0;
-      padding: 0;
-    }
-    .topbar {
-      background-color: #6a4fa3;
-      color: white;
-      padding: 1rem 2rem;
-      font-size: 1.5rem;
-      font-weight: bold;
-    }
+  body {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px; /* Was 14px */
+  background: #f7f6fb;
+  margin: 0;
+  padding: 0;
+}
+.topbar {
+  background-color: #6a4fa3;
+  color: white;
+  padding: 1rem 2rem;
+  font-size: 24px;
+  font-weight: bold;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* <-- this ensures left/right layout */
+  z-index: 1100;
+  box-shadow: 0 6px 20px rgba(106,79,163,0.12);
+}
+body {
+  /* ...existing code... */
+  padding-top: 64px; /* add space for fixed topbar */
+}
+/* Welcome intro */
+.welcome-text {
+  font-size: 18px; /* Slightly bolder intro */
+  color: #3c2b59;
+  margin-bottom: 10px;
+}
+.example-question-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 12px 0;
+}
+
+.example-question-wrapper select {
+  padding: 10px 16px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  color: #4e3c73;
+  background-color: #f0e6ff;
+  font-family: 'Inter', sans-serif;
+  box-shadow: 0 2px 6px rgba(103, 80, 164, 0.1);
+  cursor: pointer;
+}
+.example-question-wrapper select:hover {
+  background-color: #e3d4f7;
+}
+
     .method-button {
       background-color: #c2b2e1;
       color: #4e3c73;
@@ -37,86 +82,345 @@
     .method-button:hover {  
       background-color: #b29cd9;
     }
-    .similar-buttons-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 10px;
-    }
+    .expand-toggle {
+    color: #6a4fa3;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+    text-decoration: none; /* initially no underline */
+  }
+.node-card-desc--big {
+  font-size: 14.5px;
+  line-height: 1.45;
+  color: #3c2f63;
+  margin-top: 8px;
 
-    .container {
-      max-width: 900px;
-      margin: 40px auto;
-      background: white;
-      padding: 24px;
-      border-radius: 16px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.07);
-    }
-    .chat {
-      max-height: 500px;
-      overflow-y: auto;
-      margin-bottom: 1rem;
-      padding-right: 10px;
-    }
-    .chat-message {
-      margin: 12px 0;
-      padding: 14px 20px;
-      border-radius: 20px;
-      max-width: 80%;
-      line-height: 1.6;
-      animation: fadeIn 0.3s ease-in-out;
-    }
-    .user {
-      background-color: #e7dcf9;
-      align-self: flex-end;
-      margin-left: auto;
-    }
-    .bot {
-      background-color: #f2edf9;
-      align-self: flex-start;
-      margin-right: auto;
-    }
-    .input-area {
-      display: flex;
-      margin-top: 1rem;
-    }
-    input[type="text"] {
-      flex-grow: 1;
-      padding: 14px;
-      font-size: 16px;
-      border-radius: 10px;
-      border: 1px solid #ccc;
-    }
+  display: -webkit-box;
+  -webkit-line-clamp: 5;       /* ~5 lines shown */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Title row already looks good; these polish the description + spacing */
+.node-card-subwrap{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  margin:8px 0 12px;              /* space under title, before pills */
+  padding:10px 12px;
+  border-radius:12px;
+  background:linear-gradient(180deg, rgba(167,139,250,.10), rgba(167,139,250,.06));
+  border:1px solid rgba(167,139,250,.25);
+}
+
+.node-card-sub-bullet{
+  flex:0 0 8px;
+  height:8px;
+  margin-top:6px;
+  border-radius:50%;
+  background:radial-gradient(circle at 30% 30%, #7c3aed 0%, #a78bfa 60%, #c4b5fd 100%);
+  box-shadow:0 0 0 3px rgba(167,139,250,.18);
+}
+
+.node-card-sub{
+  margin:0;
+  font-size:15px;
+  line-height:1.45;
+  color:#2f2950;
+  text-wrap:balance;               /* nicer line breaks on modern browsers */
+  overflow:hidden;                 /* clamp to 3 lines for tidy cards */
+  display:-webkit-box;
+  -webkit-line-clamp:3;
+  -webkit-box-orient:vertical;
+}
+
+/* Meta pills sit closer to the text, but still breathe */
+.method-meta{
+  margin-top:6px;
+}
+
+/* See more aligned consistently to the right */
+.see-more-row{
+  display:flex;
+  justify-content:flex-end;
+  margin-top:10px;
+}
+
+.see-more-btn{
+  padding:8px 12px;
+  border-radius:10px;
+  border:1px solid rgba(124,58,237,.25);
+  background:#ede9fe;
+  color:#4e3c73;
+  font-weight:600;
+  cursor:pointer;
+  transition:transform .06s ease, box-shadow .12s ease;
+}
+.see-more-btn:hover{ 
+  box-shadow:0 6px 16px rgba(124,58,237,.18);
+}
+.see-more-btn:active{
+  transform:translateY(1px);
+}
+
+
+  .similar-buttons-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 40px auto;
+    background: white;
+    padding: 24px;
+    border-radius: 24px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.07);
+  }
+  .chat {
+  /* allow the chat to grow and use the page scrollbar instead of creating an inner scrollbar */
+  max-height: none;
+  overflow: visible;
+  margin-bottom: 1rem;
+  padding-right: 10px;
+  /* no scrollbar hiding here; outer page scrollbar will be used */
+  font-size: 18px; /* Increased font size for chat messages */
+}
+.chat-message {
+    margin: 12px 0;
+    padding: 14px 20px;
+    border-radius: 20px;
+    max-width: 80%;
+    line-height: 1.6;
+    animation: fadeIn 0.3s ease-in-out;
+    font-size: 18px; /* Increased font size for individual chat bubbles */
+  }
+  .user {
+    background-color: #e7dcf9;
+    align-self: flex-end;
+    margin-left: auto;
+  }
+  .bot {
+    background-color: #f2edf9;
+    align-self: flex-start;
+    margin-right: auto;
+  }
+  .tags button {
+  background-color: #f0e6ff;
+  color: #4e3c73;
+  border: none;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 24px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(103, 80, 164, 0.1);
+  transition: background-color 0.3s ease;
+}
+  .tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 20px 0 10px;
+  justify-content: center;
+}
+
+
+.tags button:hover {
+  background-color: #d9c7f0;
+}
+  .input-area {
+    display: flex;
+    margin-top: 0.5rem;
+  }
+    
+    input[type="text"],
+select {
+  font-size: 16px;  /* Was 14px */
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  background-color: #fcfaff;
+  box-shadow: 0 2px 5px rgba(160, 140, 200, 0.1);
+}
+/* ========== Expanded card styling ========== */
+.method-card-full{
+  margin-top:12px;
+  padding:14px;
+  border-radius:16px;
+  background:linear-gradient(180deg, rgba(167,139,250,.12), rgba(167,139,250,.06));
+  border:1px solid rgba(124,58,237,.18);
+  box-shadow:0 10px 28px rgba(124,58,237,.10);
+}
+
+/* 2-column layout on wide screens; single column on mobile */
+@media (min-width: 860px){
+  .method-card-full{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:12px;
+  }
+  .method-card-full > .method-section{
+    margin:0;               /* grid already adds spacing */
+  }
+  .method-card-full > .long-desc{
+    grid-column: 1 / -1;    /* make long description full width */
+  }
+  .method-card-full > .visualize-row,
+  .method-card-full > .feedback-block{
+    grid-column: 1 / -1;
+  }
+}
+
+/* Each section looks like a neat card */
+.method-card-full .method-section{
+  background:#fff;
+  border:1px solid rgba(124,58,237,.12);
+  border-left:4px solid var(--phase-color, #a78bfa);
+  padding:12px 14px;
+  border-radius:12px;
+  margin:10px 0;
+  box-shadow:0 4px 14px rgba(35,0,64,.06);
+}
+
+/* Section titles become compact labels */
+.method-card-full .method-section > strong{
+  display:block;
+  font-size:12px;
+  line-height:1;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  color:#5b3a8f;
+  margin-bottom:8px;
+}
+
+/* Long description block */
+.method-card-full .long-desc{
+  background:#fff;
+  border:1px solid rgba(124,58,237,.12);
+  border-radius:12px;
+  padding:12px 14px;
+  margin:10px 0;
+  max-height:220px;     /* keeps it tidy; still scrollable */
+  overflow:auto;
+  position:relative;
+  box-shadow:0 4px 14px rgba(35,0,64,.06);
+  -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+}
+
+/* Optional: nicer scrollbars (WebKit/Blink) */
+.method-card-full .long-desc::-webkit-scrollbar{
+  width:10px;
+}
+.method-card-full .long-desc::-webkit-scrollbar-track{
+  background:transparent;
+}
+.method-card-full .long-desc::-webkit-scrollbar-thumb{
+  background:rgba(124,58,237,.25);
+  border-radius:10px;
+}
+
+/* “Similar Methods” block tweaks */
+.method-card-full .similar-list{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+.method-card-full .similar-list .method-button{
+  box-shadow:0 3px 10px rgba(124,58,237,.10);
+}
+
+/* Visualization + feedback rows spacing */
+.method-card-full .visualize-row{
+  margin-top:10px;
+}
+.method-card-full .feedback-block{
+  margin-top:8px;
+  background:rgba(124,58,237,.06);
+  border:1px dashed rgba(124,58,237,.25);
+  padding:10px 12px;
+  border-radius:12px;
+}
+
+/* Small typography polish inside sections */
+.method-card-full .method-section p{
+  margin:0;
+}
+.method-card-full .method-section p + p{
+  margin-top:6px;
+}
+.chip-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:6px;
+}
+
+.chip{
+  display:inline-block;
+  padding:6px 10px;
+  border-radius:999px;
+  background:#f4f0ff;
+  border:1px solid rgba(124,58,237,.22);
+  box-shadow:0 1px 6px rgba(124,58,237,.12);
+  font-size:13px;
+  color:#3c2e66;
+  white-space:nowrap;
+}
+
+
     button {
-      background-color: #a287c4;
-      color: white;
-      font-weight: bold;
-      padding: 14px 18px;
-      border: none;
-      border-radius: 10px;
-      margin-left: 10px;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #8b6ab2;
-    }
-    .tags {
-      margin-top: 1rem;
-      text-align: center;
-    }
-    .tags button {
-      background-color: #ece5f5;
-      color: #4e3c73;
-      font-weight: 500;
-      margin: 6px;
-      border: none;
-      padding: 10px 14px;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-    .tags button:hover {
-      background-color: #d7c9eb;
-    }
+  font-size: 16px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: #a287c4;
+  color: white;
+  border: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #8b6ab2;
+}
+.example-question-wrapper select {
+  font-size: 16px;
+  padding: 12px;
+  border-radius: 12px;
+}
+
+/* Method tags/buttons */
+.method-button,
+.feedback-btn,
+.tags button {
+  font-size: 15px; /* Was 14px */
+  padding: 10px 14px;
+  border-radius: 20px;
+}
+
+/* Feedback block text */
+.feedback-block {
+  font-size: 15px;
+}
+
+/* Modal graph labels */
+#network .vis-label {
+  font-size: 14px !important; /* For node & edge text */
+}
+
+/* Explanation panel text */
+.explanation-panel {
+  font-size: 15px;
+  line-height: 1.5;
+}
+
     .method-card {
       background-color: #f8f5fc;
       border-left: 5px solid #a287c4;
@@ -159,13 +463,357 @@
     .feedback-btn:hover {
       background-color: #b39ddb;
     }
+
+.input-area {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.input-area select,
+.input-area input[type="text"] {
+  padding: 14px;
+  font-size: 15px;
+  font-family: 'Inter', sans-serif;
+  background-color: #fcfaff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(160, 140, 200, 0.1);
+  transition: border 0.3s ease;
+}
+
+.input-area select {
+  flex: 1.2;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg fill='%236a4fa3' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 18px 18px;
+  padding-right: 40px;
+  min-width: 260px;
+}
+
+.input-area input[type="text"] {
+  flex: 2;
+  font-size: 18px; /* increased from 15px */
+  line-height: 1.4; /* improves readability */
+  padding: 14px;
+}
+
+.explanation-panel {
+  font-family: 'Inter', sans-serif;
+  background: #f6f0ff;
+  padding: 16px;
+  border: 1px solid #d2b8f3;
+  border-radius: 12px;
+  margin-top: 12px;
+  box-shadow: 0 2px 6px rgba(140, 100, 200, 0.1);
+}
+.explanation-panel h4 {
+  margin-top: 0;
+  font-weight: 600;
+  font-size: 16px;
+}
+.explanation-panel p {
+  font-style: italic;
+  color: #5a437a;
+}
+.method-card-visual {
+  margin-top: 15px;
+  padding: 16px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  font-family: 'Inter', sans-serif;
+  max-width: 400px;
+  animation: fadeIn 0.3s ease-in-out;
+}
+.method-card-visual h3 {
+  margin: 10px 0 6px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #3c2b59;
+}
+.method-card-visual p {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.5;
+}
+.method-card-visual button {
+  margin-top: 10px;
+  background: #a287c4;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.method-card-visual button:hover {
+  background: #8b6ab2;
+}
+
+
+
+.input-area button {
+  background-color: #a287c4;
+  color: white;
+  font-weight: bold;
+  padding: 14px 18px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.input-area button:hover {
+  background-color: #8b6ab2;
+}
+  .node-card {
+  background: #fff;
+  border: 2.5px solid #a287c4;
+  border-left: 8px solid var(--phase-color, #a287c4);
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(103,80,164,0.13);
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  color: #3c2b59;
+  z-index: 10;
+  user-select: none;
+  pointer-events: auto;
+  padding: 12px 16px 12px 16px; /* reduced padding */
+  cursor: pointer;
+  min-width: 260px;   /* was 180px */
+  max-width: 380px;   /* was 240px */
+  transition: box-shadow 0.2s, border 0.2s, transform 0.15s, background 0.2s;
+  position: absolute;
+}
+
+/* Enhanced card typography & visual polish for floating cards */
+:root {
+  --card-bg-top: #ffffff;
+  --card-bg-bottom: #fbf7ff;
+  --card-text: #2f2440;
+  --card-subtext: #564768;
+  --card-accent: #6a4fa3;
+  --card-accent-strong: #5b3fb0;
+  --card-radius: 16px;
+}
+
+/* Base node card improvements */
+.node-card {
+  background: linear-gradient(180deg, var(--card-bg-top) 0%, var(--card-bg-bottom) 100%);
+  color: var(--card-text);
+  padding: 16px 18px;              /* a bit more breathing room */
+  border-radius: var(--card-radius);
+  border: 2px solid rgba(106,79,163,0.08); /* softened border */
+  box-shadow: 0 8px 28px rgba(64,40,105,0.10), inset 0 1px 0 rgba(255,255,255,0.6);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+  min-width: 260px;
+  max-width: 420px;
+  font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.header-pills { margin: 6px 0 10px; display: flex; flex-wrap: wrap; gap: 6px; }
+
+/* Hover state more subtle and readable */
+.node-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 18px 40px rgba(64,40,105,0.16);
+  border-color: var(--card-accent-strong);
+}
+
+/* Title: larger, crisper, scalable */
+.node-card .node-card-title {
+  font-size: clamp(15px, 1.6vw, 18px);
+  line-height: 1.25;
+  font-weight: 700;
+  color: var(--card-text);
+  letter-spacing: 0.2px;
+  margin-bottom: 6px;
+  text-rendering: optimizeLegibility;
+}
+
+/* Description: improved readability */
+.node-card .node-card-desc {
+  font-size: clamp(13px, 1.2vw, 15px);
+  line-height: 1.45;
+  color: var(--card-subtext);
+  margin-bottom: 10px;
+  max-height: 110px;  /* allow more content without overflow */
+  overflow-y: auto;
+  padding-right: 6px;
+  word-break: break-word;
+}
+
+/* Sim-score pill (contrast, size) */
+.node-card .sim-score {
+  float: right;
+  font-size: 12px;
+  color: #ffffff;
+  background: linear-gradient(90deg,#6a4fa3,#7660b8);
+  border-radius: 10px;
+  padding: 4px 8px;
+  margin-left: 8px;
+  font-weight: 700;
+  box-shadow: 0 2px 6px rgba(106,79,163,0.12);
+}
+
+/* Image: slightly larger and consistent */
+.node-card-img {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #efecf8;
+  object-fit: cover;
+  display: block;
+}
+
+/* Orbit variant: keep compact but readable */
+.node-card.orbit {
+  min-width: 200px;
+  max-width: 320px;
+  padding: 8px 10px 8px 10px;
+  font-size: 13px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: linear-gradient(180deg,#fff,#fbf9ff);
+  border-radius: 14px;
+}
+
+/* Comparison variant: slightly larger, consistent layout */
+.node-card.comparison {
+  min-width: 540px !important;
+  max-width: 600px !important;
+  padding: 28px !important;
+  border-radius: 18px;
+  margin: 0 22px;
+  box-sizing: border-box;
+}
+
+/* Phase label: clearer contrast */
+.node-card .phase-label {
+  font-size: 13px;
+  font-weight: 700;
+  padding: 6px 10px;
+  border-radius: 999px;
+  color: var(--card-accent-strong);
+  background: linear-gradient(90deg, rgba(106,79,163,0.08), rgba(106,79,163,0.04));
+  display: inline-block;
+  margin-top: 8px;
+}
+
+/* Relevance floating label: more readable small caps */
+.rel-label.floating {
+  font-weight: 800;
+  font-size: 12px;
+  padding: 6px 8px;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+/* Make scrollbar in card desc unobtrusive */
+.node-card .node-card-desc::-webkit-scrollbar {
+  width: 6px;
+}
+.node-card .node-card-desc::-webkit-scrollbar-thumb {
+  background: rgba(100, 82, 152, 0.18);
+  border-radius: 6px;
+}
+
+/* Ensure text selection looks nice */
+.node-card ::selection {
+  background: rgba(106,79,163,0.14);
+  color: #2f2440;
+}
+.node-card:hover {
+  box-shadow: 0 8px 32px rgba(103,80,164,0.22);
+  background: #f3e7fd;
+  transform: scale(1.045);
+  z-index: 51;
+}
+.node-card.highlight {
+  border-color: #6a4fa3;
+  box-shadow: 0 8px 32px rgba(103,80,164,0.18);
+  transform: scale(1.04);
+  z-index: 50;
+}
+.node-card .sim-score {
+  float: right;
+  font-size: 13px;
+  color: #7c5bb3;
+  background: #ede7f6;
+  border-radius: 8px;
+  padding: 2px 8px;
+  margin-left: 8px;
+  font-weight: 600;
+}
+.node-card-img {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #efecf8;
+  display: block;
+}
+.node-card-title {
+  font-weight: 600;
+  font-size: 1em;
+  margin-bottom: 2px;
+}
+.node-card-desc {
+  font-size: 0.93em;
+  color: #4e3c73;
+  white-space: normal;
+  overflow-y: auto;
+  text-overflow: unset;
+  max-height: 60px; /* shorter description */
+  word-break: break-word;
+}
+.orbit-card-wrapper {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+  /* Adjust vertical spacing between card and button */
+  margin-top: -18px;
+  margin-bottom: -18px;
+}
+.explore-btn {
+  display: block;
+  margin: 8px 0 0 0;
+  background: #a287c4;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s;
+  box-shadow: 0 2px 8px rgba(103,80,164,0.09);
+}
+.explore-btn:hover {
+  background: #8b6ab2;
+}
+
+
+
     #method-graph-modal {
     position: fixed;
     top: 8%;
     left: 50%;
     transform: translate(-50%, 0);
     width: 80%;
-    height: 75%;
+  height: 75%;
     background: #fffafc;
     border: 2px solid #d7c9eb;
     border-radius: 20px;
@@ -187,222 +835,2162 @@
   }
 
   .graph-button.close {
-    background-color: #a287c4;
-    padding: 10px 24px;
-    font-size: 14px;
-    border-radius: 10px;
-    color: white;
+    position: absolute;
+    top: 18px;
+    right: 24px;
+    z-index: 1001;
+    background: #a287c4;
+    color: #fff;
     border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    border-radius: 10px;
+    padding: 10px 24px;
+    font-size: 15px;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(103,80,164,0.13);
+    transition: background 0.2s;
+    min-width: 0;
   }
-
-.graph-button.close:hover {
-  background-color: #8b6ab2;
-}
 
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }
-  </style>
-</head>
-<body>
-  <div class="topbar">Design Insight Assistant</div>
-  <div class="container">
-    <div class="chat" id="chatBox">
-      <div class="chat-message bot">Welcome! Ask about any design method (e.g., “Delphi Method”) or click a phase below.</div>
-    </div>
-    <div class="input-area">
-      <input type="text" id="userInput" placeholder="Ask about a method or phase...">
-      <button onclick="sendMessage()">Send</button>
-    </div>
-    <div class="tags">
-      <button onclick="sendTag('problem_framing')">Problem Framing</button>
-      <button onclick="sendTag('implementation')">Implementation</button>
-      <button onclick="sendTag('evaluation')">Evaluation</button>
-      <button onclick="sendTag('conclusion')">Conclusion</button>
-      <button onclick="sendTag('all')">All Methods</button>
-    </div>
-  </div>
 
-  <div id="method-graph-modal">
-    <div id="network"></div>
-    <div class="close-button-container">
-  <button class="graph-button close" onclick="closeModal()">Close</button>
-</div>
-
-  </div>
-
-  <script>
-    function appendMessage(text, sender) {
-      const chatBox = document.getElementById("chatBox");
-      const div = document.createElement("div");
-      div.className = "chat-message " + sender;
-      div.innerHTML = text;
-      chatBox.appendChild(div);
-      chatBox.scrollTop = chatBox.scrollHeight;
-
-      // Attach to all visualize buttons inside this message
-      const visButtons = div.querySelectorAll(".graph-button[data-method]");
-      visButtons.forEach(btn => {
-        btn.onclick = () => {
-          const method = btn.dataset.method;
-          const similar = JSON.parse(btn.dataset.similar);
-          showRadialMindMap(method, similar);
-        };
-      });
-
-      const toggles = div.querySelectorAll('.expand-toggle');
-      toggles.forEach(toggle => {
-        toggle.onclick = () => toggleExpand(toggle);
-      });
-
-      const innerToggles = div.querySelectorAll('.second-expand-toggle');
-      innerToggles.forEach(toggle => {
-        toggle.onclick = () => toggleInnerExpand(toggle);
-      });
-    }
-
-    function sendMessage() {
-      const input = document.getElementById("userInput");
-      const message = input.value.trim();
-      if (!message) return;
-      appendMessage(message, "user");
-      fetch("/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message })
-      })
-      .then(res => res.json())
-      .then(data => appendMessage(data.reply, "bot"));
-      input.value = "";
-    }
-
-    function sendTag(phase) {
-      appendMessage(phase.replace("_", " "), "user");
-      fetch("/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: phase })
-      })
-      .then(res => res.json())
-      .then(data => appendMessage(data.reply, "bot"));
-    }
-
-    function sendMethod(title) {
-      appendMessage(title, "user");
-      fetch("/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: title })
-      })
-      .then(res => res.json())
-      .then(data => appendMessage(data.reply, "bot"));
-    }
-
-    function closeModal() {
-      document.getElementById("method-graph-modal").style.display = "none";
-    }
-
-    function showRadialMindMap(methodTitle, similar) {
-  // Limit to top 6 methods for clarity
-  const topSimilar = similar.slice(0, 6);
-
-  const nodes = [{
-    id: 1,
-    label: methodTitle,
-    color: "#8e44ad",
-    font: { size: 18, color: '#fff' }
-  }];
-
-  const edges = [];
-  let nodeId = 2;
-
-  topSimilar.forEach(sim => {
-    nodes.push({
-      id: nodeId,
-      label: sim.title,
-      color: sim.score > 0.6 ? "#e1bee7" : sim.score > 0.5 ? "#d1c4e9" : "#ede7f6",
-      font: { size: 14, color: "#333" },
-      title: `Click to explore: ${sim.title}`
-    });
-    edges.push({
-      from: 1,
-      to: nodeId,
-      label: `sim: ${sim.score.toFixed(2)}`,
-      arrows: 'to',
-      width: Math.max(1, sim.score * 8),
-      font: { align: 'middle', size: 12, color: '#555' },
-      color: { color: '#888', highlight: '#333' }
-    });
-    nodeId++;
-  });
-
-  const container = document.getElementById("network");
-  const data = {
-    nodes: new vis.DataSet(nodes),
-    edges: new vis.DataSet(edges)
-  };
-
-  const options = {
-    layout: { hierarchical: false },
-    physics: {
-      enabled: true,
-      barnesHut: {
-        gravitationalConstant: -2500,
-        centralGravity: 0.2,
-        springLength: 240,
-        damping: 0.8
-      }
-    },
-    nodes: { shape: 'dot', size: 20, borderWidth: 2 },
-    edges: { smooth: true },
-    interaction: { hover: true, zoomView: true, dragNodes: true }
-  };
-
-  const network = new vis.Network(container, data, options);
-
-  // Enable node click to explore the selected method
- network.on("click", function (params) {
-  const nodeId = params.nodes[0];
-  if (nodeId && nodeId !== 1) {
-    const clickedNode = nodes.find(n => n.id === nodeId);
-    if (clickedNode && clickedNode.label) {
-      // Zoom into the clicked node before navigating
-      network.focus(nodeId, {
-        scale: 1.5,
-        animation: {
-          duration: 500,
-          easingFunction: "easeInOutQuad"
-        }
-      });
-
-      // Delay the method switch slightly so user sees animation
-      setTimeout(() => {
-        closeModal();
-        sendMethod(clickedNode.label.trim());
-      }, 600);
-    }
+    .rel-label.floating {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translate(-50%, -120%);
+    margin-bottom: 0;
+    margin-top: 0;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+    border-radius: 10px 10px 12px 12px;
+    padding: 4px 14px 4px 10px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    pointer-events: none;
+    user-select: none;
+    opacity: 0.98;
+    background: #22c55e;
+    min-width: 0;
+    max-width: 120px;
+    white-space: nowrap;
   }
-});
+  .rel-label.floating[data-rel="Highly Relevant"] { background: #22c55e; }
+  .rel-label.floating[data-rel="Relevant"] { background: #3b82f6; }
+  .rel-label.floating[data-rel="Less Relevant"] { background: #f59e42; }
+  .rel-label.floating span { margin-left: 2px; }
 
+  #recent-methods-dock {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 12px;
+    margin: 18px 0 0 0;
+    min-height: 54px;
+    padding: 10px 0 0 0;
+    border-top: 1.5px solid #e2d8f5;
+    background: transparent;
+    position: relative;
+    z-index: 2;
+  }
+  .recent-method-chip {
+    display: flex;
+    align-items: center;
+    background: #a287c4;
+    border-radius: 18px;
+    box-shadow: 0 2px 8px rgba(103,80,164,0.08);
+    padding: 10px 28px 10px 28px;
+    font-size: 16px;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    min-width: 0;
+    max-width: 320px;
+    transition: box-shadow 0.2s, background 0.2s;
+    margin-bottom: 4px;
+    position: relative;
+    font-weight: 600;
+    white-space: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+    justify-content: center;
+  }
+  .recent-method_chip { /* fix typo for dock chips */
+  display: flex;
+  align-items: center;
+  background: #a287c4;
+  border-radius: 18px;
+  box-shadow: 0 2px 8px rgba(103,80,164,0.08);
+  padding: 10px 28px 10px 28px;
+  font-size: 16px;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  min-width: 0;
+  max-width: 320px;
+  transition: box-shadow 0.2s, background 0.2s;
+  margin-bottom: 4px;
+  position: relative;
+  font-weight: 600;
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+  justify-content: center;
+}
+.node-card.orbit {
+  min-width: 200px;
+  max-width: 320px;
+  padding: 8px 10px 8px 10px;
+  font-size: 13px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: linear-gradient(180deg,#fff,#fbf9ff);
+  border-radius: 14px;
+}
 
-  document.getElementById("method-graph-modal").style.display = "block";
+/* Comparison variant: slightly larger, consistent layout */
+.node-card.comparison {
+  min-width: 540px !important;
+  max-width: 600px !important;
+  padding: 28px !important;
+  border-radius: 18px;
+  margin: 0 22px;
+  box-sizing: border-box;
+}
+
+/* Phase label: clearer contrast */
+.node-card .phase-label {
+  font-size: 13px;
+  font-weight: 700;
+  padding: 6px 10px;
+  border-radius: 999px;
+  color: var(--card-accent-strong);
+  background: linear-gradient(90deg, rgba(106,79,163,0.08), rgba(106,79,163,0.04));
+  display: inline-block;
+  margin-top: 8px;
+}
+
+/* Relevance floating label: more readable small caps */
+.rel-label.floating {
+  font-weight: 800;
+  font-size: 12px;
+  padding: 6px 8px;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+/* Make scrollbar in card desc unobtrusive */
+.node-card .node-card-desc::-webkit-scrollbar {
+  width: 6px;
+}
+.node-card .node-card-desc::-webkit-scrollbar-thumb {
+  background: rgba(100, 82, 152, 0.18);
+  border-radius: 6px;
+}
+
+/* Ensure text selection looks nice */
+.node-card ::selection {
+  background: rgba(106,79,163,0.14);
+  color: #2f2440;
+}
+.node-card:hover {
+  box-shadow: 0 8px 32px rgba(103,80,164,0.22);
+  background: #f3e7fd;
+  transform: scale(1.045);
+  z-index: 51;
+}
+.node-card.highlight {
+  border-color: #6a4fa3;
+  box-shadow: 0 8px 32px rgba(103,80,164,0.18);
+  transform: scale(1.04);
+  z-index: 50;
+}
+.node-card .sim-score {
+  float: right;
+  font-size: 13px;
+  color: #7c5bb3;
+  background: #ede7f6;
+  border-radius: 8px;
+  padding: 2px 8px;
+  margin-left: 8px;
+  font-weight: 600;
+}
+.node-card-img {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #efecf8;
+  display: block;
+}
+.node-card-title {
+  font-weight: 600;
+  font-size: 1em;
+  margin-bottom: 2px;
+}
+.node-card-desc {
+  font-size: 0.93em;
+  color: #4e3c73;
+  white-space: normal;
+  overflow-y: auto;
+  text-overflow: unset;
+  max-height: 60px; /* shorter description */
+  word-break: break-word;
+}
+.orbit-card-wrapper {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+  /* Adjust vertical spacing between card and button */
+  margin-top: -18px;
+  margin-bottom: -18px;
+}
+.explore-btn {
+  display: block;
+  padding: 0 4px;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Method pill (top-right) — keep default look but add a strong green "added" style */
+.method-fav-pill {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 20;
+  padding: 6px 14px;
+  border-radius: 18px;
+  background: linear-gradient(90deg, #f4effa 0%, #efe7fb 100%);
+  color: #4e3c73;
+  font-weight: 700;
+  font-size: 13px;
+  border: 1px solid rgba(99,68,183,0.10);
+  box-shadow: 0 2px 8px rgba(103,80,164,0.06);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* added state — strong green pill like before */
+.method-fav-pill.added {
+  background: linear-gradient(90deg, #22c55e 0%, #16a34a 100%);
+  color: #ffffff !important;
+  border: 1px solid rgba(16,185,129,0.12);
+  box-shadow: 0 6px 18px rgba(34,197,94,0.12);
+}
+
+/* show check mark after text when added */
+.method-fav-pill.added::after {
+  content: " ✔";
+  margin-left: 6px;
+  font-weight: 800;
+  color: rgba(255,255,255,0.95);
+}
+.similar-item { display:inline-block; vertical-align:top; margin:6px 8px 10px 0; max-width: 420px; }
+.sim-explain { font-size:13px; color:#6a4fa3; opacity:.9; margin:4px 2px 0 2px; line-height:1.4; }
+.sim-chip { font-weight:600; opacity:.8; margin-left:6px; }
+
+/* Add styles for method detail rendering (insert inside existing <style>) */
+.method-detail {
+  font-family: 'Inter', sans-serif;
+  color: #2f2440;
+  line-height: 1.4;
+  font-size: 14px;
+}
+.method-detail .method-section {
+  margin-top: 10px;
+}
+.method-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+.method-meta .pill {
+  background: #f3e7fd;
+  color: #6a4fa3;
+  padding: 6px 10px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 13px;
+  border: 1px solid rgba(106,79,163,0.06);
+}
+.method-keywords {
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:8px;
+}
+.method-keywords .kw {
+  background:#ede7f6;
+  color:#5b3fb0;
+  padding:5px 10px;
+  border-radius:12px;
+  font-size:13px;
+  font-weight:600;
+}
+/* compact variant for orbit cards */
+.method-compact .node-card-title { font-size: 0.98em; }
+.method-compact .node-card-desc { font-size: 0.92em; max-height: 54px; }
+/* ensure long-desc scrolls nicely */
+.long-desc { margin-top:8px; color:#5a437a; font-size:0.95em; max-height:120px; overflow:auto; padding-right:6px; }
+/* Gorgeous method-card with phase accent and subtle gradient */
+.method-card {
+  position: relative;
+  background: linear-gradient(180deg, #ffffff 0%, #fbf7ff 100%);
+  border-radius: 20px;
+  padding: 20px 20px 18px 20px;
+  border: 2px solid rgba(106,79,163,0.08);
+  box-shadow: 0 10px 28px rgba(64,40,105,0.10), inset 0 1px 0 rgba(255,255,255,0.6);
+}
+
+/* Phase ribbon (uses --phase-color if you set it when rendering) */
+.method-card::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 8px;
+  border-radius: 20px 0 0 20px;
+  background: var(--phase-color, #6a4fa3);
+  opacity: 0.95;
+}
+
+/* Headline & spacing */
+.method-card .node-card-title {
+  font-weight: 800;
+  color: #2f2440;
+  letter-spacing: 0.2px;
+  margin-bottom: 6px;
+}
+
+/* Description readability */
+.method-card .node-card-desc {
+  color: #5a437a;
+  max-height: unset;  /* let the main card breathe */
+  font-size: 0.98em;
+}
+
+/* Pills polish */
+.method-card .pill {
+  background: linear-gradient(90deg, rgba(106,79,163,0.08), rgba(106,79,163,0.04));
+  color: #5b3fb0;
+  border: 1px solid rgba(106,79,163,0.10);
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-weight: 700;
+  margin-right: 6px;
+  margin-top: 8px;
+  display: inline-block;
+}
+
+/* Section spacing */
+.method-card .method-section {
+  margin-top: 12px;
+  color: #3c2b59;
+}
+
+/* Long description block */
+.method-card .long-desc {
+  background: #f6f0ff;
+  border: 1px solid #e9ddfb;
+  border-radius: 12px;
+  padding: 10px 12px;
+  color: #4a3a6b;
+}
+
+/* Keywords chips */
+.method-card .method-keywords .kw {
+  background: #efe7fb;
+  color: #6a4fa3;
+  border: 1px solid rgba(106,79,163,0.12);
+  border-radius: 12px;
+  padding: 6px 10px;
+  font-weight: 700;
+}
+
+/* Visualize button harmonized */
+.method-card .graph-button {
+  background: #a287c4;
+  border-radius: 12px;
+  font-weight: 700;
+}
+.method-card .graph-button:hover { background: #8b6ab2; }
+/* --- Method card visual polish & readability overrides --- */
+.method-card {
+  /* keep existing look but increase inner spacing for readability */
+  padding: 22px 22px 20px 22px !important;
+  border-radius: 18px !important;
+  line-height: 1.6;
+}
+
+/* Make title more prominent and keep it on a single line with good spacing */
+.method-card .node-card-title {
+  font-size: 1.18rem;
+  font-weight: 800;
+  color: #2b2340;
+  margin: 0 0 8px 0;
+  display: inline-block;
+}
+
+/* Phase pill (left accent uses --phase-color) */
+.method-card .phase-pill {
+  display: inline-block;
+  margin-left: 10px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: 800;
+  font-size: 0.9rem;
+  color: #fff;
+  vertical-align: middle;
+  box-shadow: 0 4px 14px rgba(12,10,25,0.06);
+}
+
+/* Keyword chips — bold and colorful */
+.method-card .method-keywords { margin-top: 10px; display:flex; gap:8px; flex-wrap:wrap; }
+.method-card .method-keywords .kw {
+  background: linear-gradient(90deg,#f3e7ff,#efe6ff);
+  color: #582b8a;
+  padding: 6px 10px;
+  border-radius: 12px;
+  font-weight: 800;
+  font-size: 0.92rem;
+  border: 1px solid rgba(88,43,138,0.08);
+}
+
+/* Meta pills styling */
+.method-card .pill {
+  background: linear-gradient(90deg, rgba(106,79,163,0.08), rgba(106,79,163,0.03));
+  color: #5b3fb0;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: 700;
+  margin-right: 8px;
+  font-size: 0.92rem;
+}
+
+/* Section spacing & readable blocks */
+.method-card .method-section { margin-top: 14px; color: #3a2b4f; font-size: 0.98rem; }
+.method-card .long-desc {
+  background: linear-gradient(180deg,#fffafc,#fbf7ff);
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(220,210,240,0.7);
+  color: #4a3a6b;
+  margin-top: 8px;
+}
+
+/* Remove scrollbar in description for method cards (allow natural page scroll) */
+.method-card .node-card-desc {
+  max-height: none !important;
+  overflow: visible !important;
+  color: #534067;
+  font-size: 1rem;
+  margin-top: 6px;
+}
+
+/* Make similar / explore controls align nicely */
+.method-card .graph-button {
+  margin-top: 14px !important;
+  padding: 10px 16px !important;
+  font-weight: 800;
+}
+
+/* Small responsive tweak for pills on narrow screens */
+@media (max-width:720px) {
+  .method-card { padding: 18px !important; }
+  .method-card .node-card-title { font-size: 1.05rem; }
+}
+
+/* Colored meta pills (time, resources, group, facilitation, default) */
+.method-card .pill {
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: 800;
+  font-size: 0.92rem;
+  display: inline-block;
+  margin-right: 8px;
+  box-shadow: 0 6px 18px rgba(10,10,25,0.06);
+  border: none;
+}
+
+/* specific colors */
+.method-card .pill-time { background: linear-gradient(90deg,#ff8a65,#ff7043); }         /* warm orange */
+.method-card .pill-resources { background: linear-gradient(90deg,#4fc3f7,#29b6f6); }    /* blue */
+.method-card .pill-group { background: linear-gradient(90deg,#81c784,#66bb6a); }        /* green */
+.method-card .pill-facilitation { background: linear-gradient(90deg,#ffb74d,#ffa726); } /* amber */
+.method-card .pill-default { background: linear-gradient(90deg,#c7b3e6,#a287c4); }      /* lavender */
+
+/* ensure contrast for small values (dark text variant) */
+.method-card .pill-dark {
+  background: #f3f2f8;
+  color: #3b2b59;
+  box-shadow: 0 4px 12px rgba(60,40,90,0.06);
+  border: 1px solid rgba(60,40,90,0.04);
+}
+
+/* subtle hover */
+.method-card .pill:hover { transform: translateY(-2px); transition: transform 0.12s ease; }
+/* === Small font-size bump for method cards only === */
+:root { --cardFontBump: 1.06; } /* tweak 1.04–1.10 to taste */
+
+.method-card { font-size: calc(16px * var(--cardFontBump)); }
+
+.method-card .node-card-title {
+  font-size: calc(1.18rem * var(--cardFontBump));
+}
+
+.method-card .node-card-desc,
+.method-card .method-section,
+.method-card .long-desc,
+.method-card ol,
+.method-card ul {
+  font-size: calc(1rem * var(--cardFontBump));
+  line-height: 1.6;
+}
+
+.method-card .pill,
+.method-card .method-keywords .kw {
+  font-size: calc(0.92rem * var(--cardFontBump));
+  padding: 7px 12px; /* slightly bigger chip */
+}
+
+/* If you also show comparison cards and want the same bump there */
+.node-card.comparison .node-card-title {
+  font-size: calc(1.12em * var(--cardFontBump));
+}
+.node-card.comparison .comparison-scroll,
+.node-card.comparison .steps-block,
+.node-card.comparison .keywords-block,
+.node-card.comparison .long-desc,
+.node-card.comparison .method-section {
+  font-size: calc(1rem * var(--cardFontBump));
+}
+/* === Spacing + readability for comparison card === */
+.node-card.comparison {
+  padding: 30px 28px !important;
+}
+
+.node-card.comparison .node-card-title {
+  margin-bottom: 12px;
+}
+
+/* Use a vertical rhythm inside the scroll area */
+.node-card.comparison .comparison-scroll {
+  line-height: 1.65;
+  display: grid;
+  grid-auto-rows: min-content;
+  row-gap: 10px;           /* main vertical spacing between blocks */
+  padding-right: 6px;      /* space away from scrollbar */
+}
+
+/* Lists & description spacing */
+.node-card.comparison .node-card-desc { margin-bottom: 4px; }
+.node-card.comparison .steps-block { margin-top: 4px; }
+.node-card.comparison ol,
+.node-card.comparison ul {
+  margin: 6px 0 8px 1.2rem; /* indent + extra breathing room */
+}
+
+/* Keyword chips spacing */
+.node-card.comparison .keywords-block { gap: 8px; }
+
+/* Action row: add separation from content */
+.node-card.comparison .card-actions {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #eadff8; /* subtle divider */
+}
+
+/* Optional: slightly larger Explore button hit-area */
+.node-card.comparison .explore-btn {
+  padding: 10px 16px;
+}
+
+/* --- Remove scrollbar & mask from long description --- */
+.method-card-full .long-desc{
+  background:#fff;
+  border:1px solid rgba(124,58,237,.12);
+  border-radius:12px;
+  padding:12px 14px;
+  margin:10px 0;
+  /* overrides */
+  max-height:none;
+  overflow:visible;
+  -webkit-mask-image:none;
+  mask-image:none;
+  box-shadow:0 4px 14px rgba(35,0,64,.06);
+}
+
+/* Bulleted lists styling used inside sections */
+.nice-list{
+  margin:8px 0 0 18px;
+  padding:0;
+}
+.nice-list li{ margin:6px 0; }
+
+/* Section tint for Risks */
+.method-section.section--risks{
+  background: #fff7f7;
+  border-color: rgba(220,38,38,.25);
+  border-left-color:#ef4444;
+}
+
+/* Chip row + chips (only for Prerequisites & Deliverables) */
+.chip-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:8px;
+}
+.chip{
+  display:inline-block;
+  padding:6px 10px;
+  border-radius:999px;
+  font-size:13px;
+  white-space:nowrap;
+  box-shadow:0 1px 6px rgba(0,0,0,.08);
+}
+
+/* Color-coded chip variants */
+.chip--prereq{
+  background:#eef2ff;                 /* indigo tint */
+  color:#312e81;
+  border:1px solid rgba(79,70,229,.28);
+}
+.chip--deliverable{
+  background:#ecfeff;                 /* teal/cyan tint */
+  color:#134e4a;
+  border:1px solid rgba(20,184,166,.28);
 }
 
 
-    function toggleExpand(el) {
-      const content = el.nextElementSibling;
-      content.style.display = content.style.display === "block" ? "none" : "block";
-      el.textContent = content.style.display === "block" ? "Hide steps" : "Learn more...";
+    /* ...existing code... */
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div>Design Insight Assistant</div>
+
+  </div>
+  <div class="container">
+
+    <div class="chat" id="chatBox">
+      <div class="chat-message bot">Welcome! Ask about any design method (e.g., “Delphi Method”) or click a phase below.</div>
+    </div>
+    <!-- Phase buttons: place directly below chatBox for better layout -->
+    <div class="phase-buttons-wrapper" style="display:flex;justify-content:center;gap:16px;margin:22px 0 10px 0;">
+      <button class="phase-btn" style="background:#e7dcf9;color:#3b82f6;border:none;border-radius:16px;padding:10px 24px;font-size:15px;font-weight:600;box-shadow:0 2px 8px rgba(103,80,164,0.09);transition:background 0.2s;" onclick="sendTag('problem_framing')">
+        <span style="color:#3b82f6;">●</span> Problem Framing
+      </button>
+      <button class="phase-btn" style="background:#e7f9ed;color:#256c3b;border:none;border-radius:16px;padding:10px 24px;font-size:15px;font-weight:600;box-shadow:0 2px 8px rgba(103,80,164,0.09);transition:background 0.2s;" onclick="sendTag('implementation')">
+        <span style="color:#22c55e;">●</span> Implementation
+      </button>
+      <button class="phase-btn" style="background:#fff7e6;color:#a15c0a;border:none;border-radius:16px;padding:10px 24px;font-size:15px;font-weight:600;box-shadow:0 2px 8px rgba(103,80,164,0.09);transition:background 0.2s;" onclick="sendTag('evaluation')">
+        <span style="color:#f59e42;">●</span> Evaluation
+      </button>
+      <button class="phase-btn" style="background:#f3e7fd;color:#6a4fa3;border:none;border-radius:16px;padding:10px 24px;font-size:15px;font-weight:600;box-shadow:0 2px 8px rgba(103,80,164,0.09);transition:background 0.2s;" onclick="sendTag('conclusion')">
+        <span style="color:#a855f7;">●</span> Conclusion
+      </button>
+    </div>
+  <!-- Recently viewed methods dock -->
+  <div id="recent-methods-label" style="font-size:15px;color:#7c5bb3;font-weight:600;margin:10px 0 0 2px;letter-spacing:0.01em;">Recently Explored Methods</div>
+  <div id="recent-methods-dock"></div>
+<div class="input-area">
+  <select id="exampleQuestionDropdown" onchange="handleExampleSelect()">
+    <option selected disabled>🔍 Try an example question</option>
+    <optgroup label="🧠 Framing Phase">
+      <option value="What methods help frame a design problem?">What methods help frame a design problem?</option>
+      <option value="How to understand stakeholders in early design?">How to understand stakeholders in early design?</option>
+    </optgroup>
+    <optgroup label="🔧 Implementation">
+      <option value="Which methods help implement an idea?">Which methods help implement an idea?</option>
+    </optgroup>
+    <optgroup label="📏 Evaluation">
+      <option value="How to evaluate if a prototype works?">How to evaluate if a prototype works?</option>
+    </optgroup>
+  </select>
+
+  <input type="text" id="userInput" placeholder="Ask about a method or phase..." />
+  <button onclick="sendMessage()">Send</button>
+</div>
+
+
+  <div id="method-graph-modal">
+    <button class="graph-button close" onclick="closeModal()" style="
+      position: absolute;
+      top: 18px;
+      right: 24px;
+      z-index: 1001;
+      background: #a287c4;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 10px 24px;
+      font-size: 15px;
+      font-weight: 600;
+      box-shadow: 0 2px 8px rgba(103,80,164,0.13);
+      transition: background 0.2s;
+      min-width: 0;
+    ">Close</button>
+    <div id="network"></div>
+    <div style="height: 60px;"></div>
+    <div id="modal-action-bar" style="position: absolute; left: 0; bottom: 20px; display: flex; justify-content: flex-start; align-items: center; z-index: 100;">
+      <div style="display: flex; flex-direction: row; gap: 18px; justify-content: flex-start; align-items: center; margin-left: 32px;">
+        <button id="compare-methods-btn" class="graph-button" style="display:none;">Compare Selected Methods</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Comparison Modal -->
+  <div id="comparison-modal" style="display:none; position:fixed; top:8%; left:50%; transform:translateX(-50%); width:80%; height:75%; min-height:300px; background:#fffafc; border:2px solid #d7c9eb; border-radius:24px; box-shadow:0 16px 48px rgba(103,80,164,0.22); z-index:10001; padding:48px 32px;">
+    <h2 style="margin-top:0; color:#6a4fa3; font-size:26px; text-align:center;">Method Comparison</h2>
+    <div id="comparison-content" style="display:flex; gap:48px; justify-content:center; align-items:flex-start; margin-top:32px; flex-wrap:nowrap;"></div>
+    <button onclick="closeComparisonModal()" style="margin-top:38px; background:#a287c4; color:#fff; border:none; border-radius:12px; padding:16px 38px; font-weight:600; font-size:18px; cursor:pointer; display:block; margin-left:auto; margin-right:auto;">Close</button>
+  </div>
+
+<script>
+
+  (function () {
+    const el = document.getElementById('userInput');
+    if (!el) return;
+
+    // Track IME composition state (for CJK input)
+    el.addEventListener('compositionstart', () => el.dataset.composing = 'true');
+    el.addEventListener('compositionend',   () => el.dataset.composing = 'false');
+
+    el.addEventListener('keydown', (e) => {
+      if (e.key !== 'Enter') return;
+
+      // Allow Shift+Enter to act as newline if you ever swap to a <textarea>
+      if (e.shiftKey) return;
+
+      // Ignore while composing
+      if (e.isComposing || el.dataset.composing === 'true') return;
+
+      e.preventDefault(); // stop the default “submit/newline”
+      const msg = el.value.trim();
+      if (msg) sendMessage();
+    });
+  })();
+  /* ---------- delegated handler for dynamically-inserted visualize buttons ---------- */
+  document.addEventListener("click", (e) => {
+    const btn = e.target.closest(".graph-button[data-method]");
+    if (!btn) return;
+
+    // Accept either base64 or plain JSON in data attributes
+    let similar = [];
+    try {
+      if (btn.dataset.similarB64) {
+        similar = JSON.parse(atob(btn.dataset.similarB64));
+      } else if (btn.dataset.similar) {
+        similar = JSON.parse(btn.dataset.similar);
+      }
+    } catch (err) {
+      console.error("Bad similar JSON on visualize button:", err);
+      alert("Sorry, couldn’t load similar methods.");
+      return;
     }
 
-    function toggleInnerExpand(el) {
-      const details = el.nextElementSibling;
-      details.style.display = details.style.display === "block" ? "none" : "block";
-      el.textContent = details.style.display === "block" ? "Hide extra info" : "More info...";
+    const method = btn.dataset.method || "";
+    if (!similar || !similar.length) {
+      alert("No similar methods found.");
+      return;
     }
-  </script>
+    showRadialMindMap(method, similar);
+  });
+
+  /* ------------------------------- chat helpers ---------------------------------- */
+  // helper to scroll chat to end (smooth by default)
+
+  /**
+ * Scroll the chat container so the LAST message's TOP (e.g., its title)
+ * is aligned near the top of the scrollable area.
+ *
+ * @param {Object} opts
+ * @param {string} opts.containerId   - ID of the scrollable chat container
+ * @param {string} opts.messageSelector - CSS selector for each chat message node
+ * @param {boolean} opts.smooth       - smooth behavior
+ * @param {number} opts.margin        - extra px space above the message
+ */
+async function scrollToLastMessageStart({
+  containerId = "chatBox",
+  messageSelector = ".chat-message, .msg, .bot-block, .user-block",
+  smooth = true,
+  margin = 8
+} = {}) {
+  const chatBox = document.getElementById(containerId);
+  if (!chatBox) return;
+
+  // Wait a tick or two for layout to settle (new DOM, images, fonts)
+  // so we compute the correct offset.
+  await new Promise(requestAnimationFrame);
+  await new Promise(requestAnimationFrame);
+
+  const messages = chatBox.querySelectorAll(messageSelector);
+  if (!messages.length) return;
+
+  const last = messages[messages.length - 1];
+
+  // Compute offsetTop relative to the chat container
+  const getOffsetTopWithin = (el, ancestor) => {
+    let top = 0;
+    let node = el;
+    while (node && node !== ancestor) {
+      top += node.offsetTop;
+      node = node.offsetParent;
+    }
+    return top;
+  };
+
+  const targetTop = Math.max(0, getOffsetTopWithin(last, chatBox) - margin);
+
+  try {
+    if ("scrollTo" in chatBox) {
+      chatBox.scrollTo({ top: targetTop, behavior: smooth ? "smooth" : "auto" });
+    } else {
+      chatBox.scrollTop = targetTop;
+    }
+  } catch (e) {
+    chatBox.scrollTop = targetTop;
+  }
+}
+
+  function scrollChatToEnd(smooth = true) {
+    const chatBox = document.getElementById("chatBox");
+    if (!chatBox) return;
+    try {
+      if (smooth && "scrollTo" in chatBox) {
+        chatBox.scrollTo({ top: chatBox.scrollHeight, behavior: "smooth" });
+        return;
+      }
+    } catch (e) { /* fallback below */ }
+    chatBox.scrollTop = chatBox.scrollHeight;
+  }
+
+  function appendMessage(text, sender) {
+    const chatBox = document.getElementById("chatBox");
+    const div = document.createElement("div");
+    div.className = "chat-message " + sender;
+    div.innerHTML = text;
+    chatBox.appendChild(div);
+    // Scroll so the top of the new message is visible (not the end)
+    try {
+      div.scrollIntoView({ behavior: "smooth", block: "start" });
+    } catch (e) {
+      // fallback to scrolling the container
+      chatBox.scrollTop = div.offsetTop;
+    }
+
+    // --- Ensure 'See more' buttons work immediately for appended server-rendered cards ---
+    const seeMoreBtns = div.querySelectorAll('.see-more-btn');
+    seeMoreBtns.forEach(btn => {
+      // avoid double-binding
+      if (btn._seeMoreBound) return;
+      btn._seeMoreBound = true;
+      btn.addEventListener('click', (ev) => {
+        ev.stopPropagation();
+        const card = btn.closest('.method-card');
+        if (!card) return;
+        const full = card.querySelector('.method-card-full');
+        if (!full) return;
+        const isHidden = full.style.display === 'none' || window.getComputedStyle(full).display === 'none';
+        if (isHidden) {
+          full.style.display = 'block';
+          btn.textContent = 'See less';
+          btn.setAttribute('aria-expanded', 'true');
+          try { full.scrollIntoView({ behavior: 'smooth', block: 'start' }); } catch (e) {}
+        } else {
+          full.style.display = 'none';
+          btn.textContent = 'See more';
+          btn.setAttribute('aria-expanded', 'false');
+          try { card.scrollIntoView({ behavior: 'smooth', block: 'start' }); } catch (e) {}
+        }
+      });
+    });
+
+    // Also wire up any visualize buttons that arrived inside this message
+    const visButtons = div.querySelectorAll(".graph-button[data-method]");
+    visButtons.forEach(btn => {
+      btn.onclick = () => {
+        let similar = [];
+        try {
+          if (btn.dataset.similarB64) {
+            similar = JSON.parse(atob(btn.dataset.similarB64));
+          } else if (btn.dataset.similar) {
+            similar = JSON.parse(btn.dataset.similar);
+          }
+        } catch (e) {
+          console.error("Bad similar JSON on visualize button:", e);
+          alert("Sorry, couldn’t load similar methods.");
+          return;
+        }
+        showRadialMindMap(btn.dataset.method, similar);
+      };
+    });
+
+    const feedbackButtons = div.querySelectorAll(".feedback-btn");
+    feedbackButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const methodTitle = btn.getAttribute("data-method");
+        const feedbackType = btn.getAttribute("data-feedback");
+        sendFeedback(feedbackType, methodTitle);
+      });
+    });
+ 
+    const toggles = div.querySelectorAll('.expand-toggle');
+    toggles.forEach(toggle => { toggle.onclick = () => toggleExpand(toggle); });
+ 
+    const innerToggles = div.querySelectorAll('.second-expand-toggle');
+    innerToggles.forEach(toggle => { toggle.onclick = () => toggleInnerExpand(toggle); });
+
+    // --- Add phase bar to method cards in chat ---
+    setTimeout(async () => {
+      const lastBotMsg = chatBox.querySelector('.chat-message.bot:last-child');
+      if (!lastBotMsg) return;
+      const titleEl = lastBotMsg.querySelector('h2, h3');
+      if (!titleEl) return;
+      const methodTitle = titleEl.textContent.trim();
+
+      // Load methodDataCache if not present
+      let methodData = window.methodDataCache;
+      if (!methodData) {
+        try {
+          const resp = await fetch('/data.json');
+          methodData = await resp.json();
+          window.methodDataCache = methodData;
+        } catch (e) { methodData = []; }
+      }
+
+      // Find method entry
+      const entry = methodData.find(m => m.title === methodTitle);
+      if (!entry) return;
+
+      // Phase color map
+      const phaseColors = {
+        problem_framing: "#3b82f6",
+        implementation: "#22c55e",
+        evaluation: "#f59e42",
+        conclusion: "#a855f7"
+      };
+
+      // Use phase_membership for fuzzy bands
+      const scores = entry.phase_membership || {};
+      const phases = Object.keys(phaseColors);
+
+      // If scores exist, show multi-band bar
+      if (scores && Object.keys(scores).length > 0) {
+        // Normalize scores to sum to 1 (optional, if not already)
+        let total = phases.reduce((sum, p) => sum + (scores[p] || 0), 0);
+        if (total === 0) total = 1;
+
+        // Create a visually aesthetic horizontal bar with colored bands and percentages
+        const barWrapper = document.createElement('span');
+        barWrapper.style.display = 'inline-flex';
+        barWrapper.style.alignItems = 'center';
+        barWrapper.style.marginLeft = '14px';
+
+        const bar = document.createElement('span');
+        bar.style.display = 'inline-block';
+        bar.style.width = '110px';
+        bar.style.height = '22px';
+        bar.style.borderRadius = '8px';
+        bar.style.overflow = 'hidden';
+        bar.style.boxShadow = '0 2px 8px rgba(0,0,0,0.08)';
+        bar.style.border = '1.5px solid #e2d8f5';
+        bar.style.background = '#f7f6fb';
+
+        // Build bands with tooltip
+        let html = '';
+        phases.forEach(p => {
+          const percent = ((scores[p] || 0) / total) * 100;
+          if (percent > 0) {
+            html += `<span style="
+              display:inline-block;
+              height:100%;
+              width:${percent}%;
+              background:${phaseColors[p]};
+              position:relative;
+            " title="${p.replace('_',' ')}: ${percent.toFixed(0)}%"></span>`;
+          }
+        });
+        bar.innerHTML = html;
+
+        // Add percentage labels below the ba
+        const percentLabels = document.createElement('span');
+        percentLabels.style.display = 'flex';
+        percentLabels.style.justifyContent = 'space-between';
+        percentLabels.style.width = '110px';
+        percentLabels.style.fontSize = '13px';
+        percentLabels.style.marginTop = '2px';
+        percentLabels.style.fontWeight = '500';
+
+        percentLabels.innerHTML = phases.map(p => {
+          const percent = ((scores[p] || 0) / total) * 100;
+          if (percent > 0) {
+            return `<span style="color:${phaseColors[p]};">${percent.toFixed(0)}%</span>`;
+          } else {
+            return `<span style="color:#ccc;">&nbsp;</span>`;
+          }
+        }).join('');
+
+        // Tooltip for all phases
+        barWrapper.title = phases.map(p => `${p.replace('_',' ')}: ${(scores[p]||0).toFixed(2)}`).join(', ');
+
+        // Add bar and labels to wrapper
+        barWrapper.appendChild(bar);
+        barWrapper.appendChild(percentLabels);
+
+        // Insert after method name
+        titleEl.appendChild(barWrapper);
+      } else {
+        // Fallback: single color
+        let phase = entry.phase || 'problem_framing';
+        const bar = document.createElement('span');
+        bar.style.display = 'inline-block';
+        bar.style.width = '22px';
+        bar.style.height = '22px';
+        bar.style.borderRadius = '8px';
+        bar.style.marginLeft = '10px';
+        bar.style.verticalAlign = 'middle';
+        bar.style.background = phaseColors[phase] || "#a287c4";
+        bar.title = phase.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase());
+        titleEl.appendChild(bar);
+      }
+    }, 0);
+  }
+
+  function handleExampleSelect() {
+    const dropdown = document.getElementById("exampleQuestionDropdown");
+    const selectedQuestion = dropdown.value;
+    if (!selectedQuestion) return;
+    appendMessage(selectedQuestion, "user");
+    fetch("/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: selectedQuestion })
+    }).then(res => res.json())
+      .then(data => appendMessage(data.reply, "bot"));
+  }
+
+  function sendFeedback(feedbackType, methodTitle) {
+    fetch("/feedback", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ feedback: feedbackType, method: methodTitle })
+    }).then(res => res.json())
+      .then(() => alert("Thanks for your feedback!"));
+  }
+
+  function sendMessage() {
+    const input = document.getElementById("userInput");
+    const message = input.value.trim();
+    if (!message) return;
+    appendMessage(message, "user");
+    fetch("/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message })
+    }).then(res => res.json())
+      .then(data => appendMessage(data.reply, "bot"));
+    input.value = "";
+  }
+
+  function sendTag(phase) {
+    appendMessage(phase.replace("_", " "), "user");
+    fetch("/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: phase })
+    }).then(res => res.json())
+      .then(data => {
+        // If no reply or no methods, show a friendly message
+        if (!data.reply || !/\w/.test(data.reply)) {
+          appendMessage("No methods found for this phase. Try another phase or ask a specific question!", "bot");
+        } else {
+          appendMessage(data.reply, "bot");
+        }
+      });
+  }
+
+
+
+  async function sendMethod(title) {
+  // show the user bubble
+  appendMessage(title, "user");
+
+  // fetch backend-rendered card
+  try {
+    const res = await fetch("/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: title })
+    });
+    const data = await res.json();
+    if (data?.reply) appendMessage(data.reply, "bot");
+  } catch (err) {
+    console.error("chat fetch error:", err);
+  }
+
+  // update "recently explored" once (best-effort)
+  try {
+    const data = await getMethodData();
+    const entry = data.find(m => m.title === title);
+    addRecentMethod({ title, phase: entry?.phase || 'problem_framing' });
+  } catch {
+    addRecentMethod({ title, phase: 'problem_framing' });
+  }
+}
+  
+
+  function closeModal() {
+    document.getElementById("method-graph-modal").style.display = "none";
+  }
+
+  // Comparison modal logic
+  function closeComparisonModal() {
+    document.getElementById('comparison-modal').style.display = 'none';
+  }
+
+  /* ---------- renderComparison + updated compare-button handler (IMPROVED) ---------- */
+async function renderComparison(selectedItems) {
+  // Normalize selectedItems into an array of title strings
+  const titles = (selectedItems || []).map(item => {
+    if (!item) return '';
+    if (typeof item === 'string') return item.trim();
+    if (item.dataset && item.dataset.title) return item.dataset.title.trim();
+    if (typeof item.textContent === 'string') return item.textContent.trim();
+    return '';
+  }).filter(Boolean);
+
+  if (titles.length === 0) {
+    alert('No methods selected for comparison.');
+    return;
+  }
+
+  // ensure method data is available
+  let methodData = window.methodDataCache;
+  if (!methodData) {
+    try {
+      const resp = await fetch('/data.json');
+      methodData = await resp.json();
+      window.methodDataCache = methodData;
+    } catch (err) {
+      console.error('Could not load method data for comparison', err);
+      methodData = [];
+    }
+  }
+
+  const phaseColors = {
+    problem_framing: "#3b82f6",
+    implementation: "#22c55e",
+    evaluation: "#f59e42",
+    conclusion: "#a855f7"
+  };
+
+  const normalize = t => (t || '').toString().trim().toLowerCase();
+
+  // Map titles -> full method entries if available, otherwise create lightweight placeholder
+  const selected = titles.slice(0, 3).map(title => {
+    const nt = normalize(title);
+    let entry = methodData.find(m => normalize(m.title) === nt) || methodData.find(m => normalize(m.title).includes(nt));
+    if (entry) {
+      // Prefer "steps" from data.json, fall back to "key_steps" if present
+      const steps = entry.steps || entry.key_steps || null;
+      // Return a copy and canonicalize to .steps so rendering uses a single property
+      return { ...entry, steps };
+    }
+    // fallback placeholder object so UI still shows the selected title
+    return {
+      title: title,
+      short_description: "(Details not available locally.)",
+      phase: null,
+      steps: null,
+      image: null
+    };
+  });
+
+  // Update header with selected titles (helpful feedback)
+  const header = document.querySelector('#comparison-modal h2');
+  if (header) {
+    header.textContent = `Method Comparison`;
+  }
+
+  // --- Uniform card size and visual style ---
+  // Add CSS for .node-card.comparison to ensure same height, width, and padding
+  const styleId = 'comparison-card-style';
+  if (!document.getElementById(styleId)) {
+    const style = document.createElement('style');
+    style.id = styleId;
+    style.innerHTML = `
+      /* Enforce uniform card dimensions and make inner area scrollable */
+      .node-card.comparison {
+        width: 540px !important;
+        min-width: 540px !important;
+        max-width: 600px !important;
+        height: 520px !important;
+        box-sizing: border-box;
+        padding: 28px !important;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        background: #fff;
+        border-radius: 18px;
+        box-shadow: 0 6px 28px rgba(103,80,164,0.10);
+        margin: 0 22px;
+        position: relative;
+        overflow: hidden; /* keep consistent size */
+      }
+      #comparison-content {
+        gap: 36px;
+        padding: 12px 12px;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex-wrap: nowrap;
+        box-sizing: border-box;
+      }
+      .node-card.comparison .comparison-scroll {
+        flex: 1 1 auto;
+        width: 100%;
+        overflow-y: auto;
+        padding: 14px 8px;
+        row-gap: 12px;
+        box-sizing: border-box;
+      }
+      .node-card.comparison .node-card-title {
+        font-size: 1.12em;
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+      .node-card.comparison .node-card-desc {
+        margin-bottom: 10px;
+        max-height: 64px;
+        overflow: hidden;
+      }
+      .node-card.comparison .steps-block,
+      .node-card.comparison .keywords-block,
+      .node-card.comparison .long-desc,
+      .node-card.comparison .method-section {
+        margin-top: 12px;
+        line-height: 1.5;
+      }
+      .node-card.comparison .card-actions {
+        margin-top: 16px;
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        flex-shrink: 0;
+        gap: 12px;
+      }
+      .node-card.comparison .phase-label {
+        margin: 0;
+      }
+      .node-card.comparison .comparison-scroll::-webkit-scrollbar {
+        width: 8px;
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
+  // Render cards (ensure we use m.steps, with fallback text)
+  const contentDiv = document.getElementById('comparison-content');
+  contentDiv.style.flexWrap = "nowrap";
+  contentDiv.style.justifyContent = "center";
+  contentDiv.style.alignItems = "flex-start";
+  contentDiv.innerHTML = selected.map(m => {
+    const phaseColor = (m.phase && phaseColors[m.phase]) || "#a287c4";
+    // Steps
+    let stepsHtml = "";
+    if (m.steps && Array.isArray(m.steps) && m.steps.length) {
+      stepsHtml = `<div class="steps-block"><strong>Key Steps:</strong><ol>${m.steps.map(step => `<li>${step}</li>`).join('')}</ol></div>`;
+    } else if (m.steps) {
+      stepsHtml = `<div class="steps-block"><strong>Key Steps:</strong> ${m.steps}</div>`;
+    } else {
+      stepsHtml = `<div class="steps-block"><strong>Key Steps:</strong> <em>No steps available.</em></div>`;
+    }
+    // Long description
+    let longDescHtml = "";
+    if (m.long_description) {
+      longDescHtml = `<div class="long-desc" style="margin:10px 0 0 0; font-size:0.97em; color:#5a437a;"><strong>Description:</strong> ${m.long_description}</div>`;
+    }
+    // Keywords
+    let keywordsHtml = "";
+    if (m.keywords && Array.isArray(m.keywords) && m.keywords.length) {
+      keywordsHtml = `<div class="keywords-block" style="margin-top:10px; display:flex; flex-wrap:wrap; gap:8px;">
+        ${m.keywords.map(kw => `<span style="background:#ede7f6;color:#6a4fa3;padding:6px 14px;border-radius:14px;font-size:14px;font-weight:600;">${kw}</span>`).join('')}
+      </div>`;
+    }
+    // Inputs
+    let inputsHtml = "";
+    if (m.inputs && m.inputs.length) {
+      inputsHtml = `<div style="margin-top:8px;"><strong>Inputs:</strong> ${m.inputs.join(', ')}</div>`;
+    }
+    // Outputs
+    let outputsHtml = "";
+    if (m.outputs && m.outputs.length) {
+      outputsHtml = `<div style="margin-top:4px;"><strong>Outputs:</strong> ${m.outputs.join(', ')}</div>`;
+    }
+    // Time cost
+    let timeCostHtml = "";
+    if (m.time_cost) {
+      timeCostHtml = `<div style="margin-top:4px;"><strong>Time Cost:</strong> ${m.time_cost}</div>`;
+    }
+    // Resource cost
+    let resourceCostHtml = "";
+    if (m.resource_cost) {
+      resourceCostHtml = `<div style="margin-top:4px;"><strong>Resource Cost:</strong> ${m.resource_cost}</div>`;
+    }
+    // Group size
+    let groupSizeHtml = "";
+    if (m.group_size) {
+      groupSizeHtml = `<div style="margin-top:4px;"><strong>Group Size:</strong> ${m.group_size}</div>`;
+    }
+    // Facilitation needed
+    let facilitationHtml = "";
+    if (typeof m.facilitation_needed !== "undefined") {
+      facilitationHtml = `<div style="margin-top:4px;"><strong>Facilitation Needed:</strong> ${m.facilitation_needed ? "Yes" : "No"}</div>`;
+    }
+    // Risks/Biases
+    let risksHtml = "";
+    if (m.risks_biases && m.risks_biases.length) {
+      risksHtml = `<div style="margin-top:4px;"><strong>Risks/Biases:</strong> ${m.risks_biases.join(', ')}</div>`;
+    }
+    // Strengths
+    let strengthsHtml = "";
+    if (m.strengths && m.strengths.length) {
+      strengthsHtml = `<div style="margin-top:4px;"><strong>Strengths:</strong> ${m.strengths.join(', ')}</div>`;
+    }
+    // Limitations
+    let limitationsHtml = "";
+    if (m.limitations && m.limitations.length) {
+      limitationsHtml = `<div style="margin-top:4px;"><strong>Limitations:</strong> ${m.limitations.join(', ')}</div>`;
+    }
+    // Suitable for
+    let suitableHtml = "";
+    if (m.suitable_for && m.suitable_for.length) {
+      suitableHtml = `<div style="margin-top:4px;"><strong>Suitable For:</strong> ${m.suitable_for.join(', ')}</div>`;
+    }
+    // Prerequisites
+    let prereqHtml = "";
+    if (m.prerequisites && m.prerequisites.length) {
+      prereqHtml = `<div style="margin-top:4px;"><strong>Prerequisites:</strong> ${m.prerequisites.join(', ')}</div>`;
+    }
+    // Deliverables
+    let deliverablesHtml = "";
+    if (m.deliverables && m.deliverables.length) {
+      deliverablesHtml = `<div style="margin-top:4px;"><strong>Deliverables:</strong> ${m.deliverables.join(', ')}</div>`;
+    }
+
+    return `
+      <div class="node-card comparison" style="--phase-color:${phaseColor};">
+        ${m.image ? `<img src="${m.image}" alt="${m.title}" class="node-card-img">` : ""}
+        <div class="node-card-title">${m.title}</div>
+
+        <div class="comparison-scroll">
+          <div class="node-card-desc">${m.short_description || "<em>No description available.</em>"}</div>
+          ${longDescHtml}
+          ${stepsHtml}
+          ${keywordsHtml}
+          ${inputsHtml}
+          ${outputsHtml}
+          ${timeCostHtml}
+          ${resourceCostHtml}
+          ${groupSizeHtml}
+          ${facilitationHtml}
+          ${risksHtml}
+          ${strengthsHtml}
+          ${limitationsHtml}
+          ${suitableHtml}
+          ${prereqHtml}
+          ${deliverablesHtml}
+        </div>
+
+        <div class="card-actions">
+          ${m.phase ? `<div class="phase-label" style="color:${phaseColor};background:${phaseColor}22;">${String(m.phase).replace('_',' ')}</div>` : ""}
+          <button class="explore-btn" style="background:#a287c4;color:#fff;border:none;border-radius:8px;padding:8px 12px;cursor:pointer;">Explore</button>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  // Wire card clicks for "Explore Method" behavior (card click opens method in chat)
+  setTimeout(() => {
+    // For comparison cards: clicking the whole card opens the method in chat
+    document.querySelectorAll('#comparison-content .node-card.comparison').forEach(card => {
+      card.style.cursor = 'pointer';
+      card.onclick = (e) => {
+        e.stopPropagation();
+        const title = card.querySelector('.node-card-title')?.textContent?.trim();
+        if (title) {
+          closeComparisonModal();
+          closeModal(); // just in case
+          sendMethod(title);
+          // Scroll chat to bottom after method is sent (smooth)
+          scrollToLastMessageStart(); 
+        }
+      };
+    });
+  }, 0);
+
+  // Show modal
+  document.getElementById('comparison-modal').style.display = 'block';
+}
+
+// Backwards compatibility
+window._showComparisonModal = renderComparison;
+
+// Initialize compare button to collect checkboxes from the OPEN modal only
+(function() {
+  function initCompareBtn() {
+    const compareBtn = document.getElementById('compare-methods-btn');
+    if (!compareBtn) return;
+    compareBtn.addEventListener('click', function() {
+      const modalEl = document.getElementById('method-graph-modal');
+      if (!modalEl) {
+        alert("No methods visible to compare.");
+        return;
+      }
+      // collect checked checkboxes only within the modal
+      const checkedBoxes = Array.from(modalEl.querySelectorAll('.compare-checkbox:checked'));
+      const checkedTitles = checkedBoxes.map(cb => (cb.dataset && cb.dataset.title) ? cb.dataset.title : cb.value).filter(Boolean);
+      if (checkedTitles.length < 2) {
+        // still allow showing the comparison UI so user sees what was selected,
+        // but warn them that 2+ recommended.
+        if (!checkedTitles.length) {
+          alert("Select at least 2 methods to compare.");
+          return;
+        }
+      }
+      renderComparison(checkedTitles);
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCompareBtn);
+  } else {
+    initCompareBtn();
+  }
+})()
+  /* ------------------------------ graph + card ----------------------------------- */
+let methodDataCache = null;
+let methodsByTitle = {};
+
+async function getMethodData() {
+  if (methodDataCache) return methodDataCache;
+  const resp = await fetch('/data.json');
+  methodDataCache = await resp.json();
+  return methodDataCache;
+}
+
+async function ensureMethodIndex() {
+  if (Object.keys(methodsByTitle).length) return methodsByTitle;
+  const data = await getMethodData();
+  methodsByTitle = Object.fromEntries(
+    data.map(m => [m.title.trim().toLowerCase(), m])
+  );
+  return methodsByTitle;
+}
+
+function answerAboutMethod(method, rawQuestion) {
+  if (!method) return "I couldn't find that method.";
+  const q = (rawQuestion || "").toLowerCase().trim();
+
+  const pick = (label, value) => {
+    if (value == null) return null;
+    if (Array.isArray(value) && value.length === 0) return null;
+    if (Array.isArray(value)) return `<strong>${label}:</strong> <ul>${value.map(v=>`<li>${escapeHtml(String(v))}</li>`).join('')}</ul>`;
+    return `<strong>${label}:</strong> ${escapeHtml(String(value))}`;
+  };
+
+  const sections = [];
+
+  // 1) Intent buckets (expand/adjust keywords anytime)
+  if (/(step|process|how\s+to|how\s+do|procedure|workflow)/.test(q)) {
+    const v = method.steps ?? method.key_steps;
+    const html = pick("Key steps", v);
+    if ( html) sections.push(html);
+  }
+  if (/(time|duration|how long|length)/.test(q)) {
+    const html = pick("Time cost", method.time_cost);
+    if (html) sections.push(html);
+  }
+  if (/(resource|equipment|tools|materials)/.test(q)) {
+    const html = pick("Resources", method.resource_cost ?? method.inputs);
+    if (html) sections.push(html);
+  }
+  if (/(input|requirements|what do i need)/.test(q)) {
+    const html = pick("Inputs", method.inputs);
+    if (html) sections.push(html);
+  }
+  if (/(output|deliverable|result)/.test(q)) {
+    const deliverables = method.deliverables ?? method.outputs;
+    const html = pick("Deliverables", deliverables);
+    if (html) sections.push(html);
+  }
+  if (/(risk|bias|pitfall|gotcha|watch\s*out)/.test(q)) {
+    const html = pick("Risks / biases", method.risks_biases);
+    if (html) sections.push(html);
+  }
+  if (/(strength|benefit|pros?)/.test(q)) {
+    const html = pick("Strengths", method.strengths);
+    if (html) sections.push(html);
+  }
+  if (/(limitation|weakness|cons?)/.test(q)) {
+    const html = pick("Limitations", method.limitations);
+    if (html) sections.push(html);
+  }
+  if (/(suitable|use\s+when|best\s+for|good\s+for|when\s+to\s+use)/.test(q)) {
+    const html = pick("Suitable for", method.suitable_for);
+    if (html) sections.push(html);
+  }
+  if (/(group|participants|team\s+size|people)/.test(q)) {
+    const html = pick("Group size", method.group_size);
+    if (html) sections.push(html);
+  }
+  if (/(facilitation|facilitator|moderation)/.test(q)) {
+    const needed = (typeof method.facilitation_needed !== "undefined")
+      ? (method.facilitation_needed ? "Yes" : "No")
+      : null;
+    const html = pick("Facilitation needed", needed);
+    if (html) sections.push(html);
+  }
+  if (/(prereq|pre-?requisite|preparation|before\s+start)/.test(q)) {
+    const html = pick("Prerequisites", method.prerequisites);
+    if (html) sections.push(html);
+  }
+  if (/(keyword|tag)/.test(q)) {
+    const html = pick("Keywords", method.keywords);
+    if (html) sections.push(html);
+  }
+  if (/(phase|where in process)/.test(q)) {
+    const pm = method.phase_membership;
+    if (pm && typeof pm === 'object') {
+      const entries = Object.entries(pm).map(([k,v]) => `${k.replace('_',' ')}: ${v}`);
+      sections.push(`<strong>Phase membership:</strong> <ul>${entries.map(e=>`<li>${escapeHtml(e)}</li>`).join('')}</ul>`);
+    } else if (method.phase) {
+      sections.push(`<strong>Phase:</strong> ${escapeHtml(String(method.phase))}`);
+    }
+  }
+
+  // 2) If routed answer exists, return it
+  if (sections.length) return sections.join("<br>");
+
+  // 3) Fallback: keyword scan across fields
+  const fieldsToScan = {
+    "Short description": method.short_description,
+    "Description": method.long_description,
+    "Steps": method.steps ?? method.key_steps,
+    "Inputs": method.inputs,
+    "Outputs": method.outputs,
+    "Deliverables": method.deliverables,
+    "Time cost": method.time_cost,
+    "Resources": method.resource_cost,
+    "Group size": method.group_size,
+    "Facilitation needed": (typeof method.facilitation_needed!=="undefined") ? (method.facilitation_needed?"Yes":"No") : null,
+    "Risks / biases": method.risks_biases,
+    "Strengths": method.strengths,
+    "Limitations": method.limitations,
+    "Suitable for": method.suitable_for,
+    "Prerequisites": method.prerequisites,
+    "Keywords": method.keywords
+  };
+
+  const tokens = q.split(/\s+/).filter(Boolean);
+  const hits = [];
+
+  for (const [label,val] of Object.entries(fieldsToScan)) {
+    if (val == null) continue;
+    const text = Array.isArray(val) ? val.join(" ").toLowerCase() : String(val).toLowerCase();
+    const score = tokens.reduce((acc,t)=> acc + (text.includes(t)?1:0), 0);
+    if (score > 0) {
+      hits.push({ label, val, score });
+    }
+  }
+  hits.sort((a,b)=> b.score - a.score);
+
+  if (hits.length) {
+    return hits.slice(0,3).map(h => pick(h.label, h.val)).filter(Boolean).join("<br>");
+  }
+
+  // 4) Last resort
+  return "I couldn't find that in this method’s details. Try asking about steps, time, resources, deliverables, risks, strengths, limitations, or suitability.";
+}
+
+function escapeHtml(s) {
+  return String(s)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;').replace(/"/g,'&quot;')
+    .replace(/'/g,'&#39;');
+}
+
+
+function renderMethodDetails(m, opts = {}) {
+  // --- utilities ---
+  const esc = (s) => String(s ?? '')
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;').replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+
+  const full = Boolean(opts.full);
+  const title = m.title || '';
+  const shortDesc = m.short_description || '';
+  const longDesc = m.long_description || '';
+  // prefer array; if string, we’ll render plain text later
+  const stepsRaw = m.steps ?? m.key_steps ?? [];
+  const stepsIsArray = Array.isArray(stepsRaw);
+  const steps = stepsIsArray ? stepsRaw : String(stepsRaw || '');
+  const keywords = m.keywords || [];
+  const inputs = m.inputs || [];
+  const outputs = m.outputs || [];
+  const timeCost = m.time_cost || '';
+  const resourceCost = m.resource_cost || '';
+  const groupSize = m.group_size || '';
+  const facilitation = (typeof m.facilitation_needed !== 'undefined')
+    ? (m.facilitation_needed ? 'Yes' : 'No')
+    : null;
+  const risks = m.risks_biases || [];
+  const strengths = m.strengths || [];
+  const limitations = m.limitations || [];
+  const suitable = m.suitable_for || [];
+  const prereq = m.prerequisites || [];
+  const deliverables = m.deliverables || [];
+  const phaseMembership = m.phase_membership || null;
+  const source = m.source || '';
+  function slugId(s) {
+  return s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');
+}
+
+  // --- compact view (popup/orbit center) — NO keywords here ---
+  if (!full) {
+    return `
+      ${m.image ? `<img src="${esc(m.image)}" alt="${esc(title)}" class="node-card-img">` : ''}
+      <div class="node-card-title">${esc(title)}</div>
+      <div class="node-card-desc">${esc(shortDesc) || "<em>No description available.</em>"}</div>
+    `;
+  }
+
+  // --- discover "unknown" fields and render them nicely ---
+  const knownKeys = new Set([
+    'title','short_description','long_description','steps','key_steps','keywords','inputs','outputs',
+    'time_cost','resource_cost','group_size','facilitation_needed','risks_biases','strengths',
+    'limitations','suitable_for','prerequisites','deliverables','phase_membership','source',
+    'image','phase'
+  ]);
+
+  let extraHtml = '';
+  Object.keys(m).forEach(k => {
+    if (knownKeys.has(k)) return;
+    const v = m[k];
+    if (v == null) return;
+    if (Array.isArray(v) && v.length === 0) return;
+    if (typeof v === 'object' && !Array.isArray(v) && Object.keys(v).length === 0) return;
+    if (typeof v === 'string' && v.trim() === '') return;
+
+    const label = k.replace(/_/g, ' ').replace(/\b\w/g, ch => ch.toUpperCase());
+       let valueHtml = '';
+    if (Array.isArray(v)) {
+      if (v.length && typeof v[0] === 'object') {
+        valueHtml = v.map(item =>
+          `<div style="margin-top:6px;padding-left:8px;">${esc(JSON.stringify(item))}</div>`
+        ).join('');
+      } else {
+        valueHtml = v.map(esc).join(', ');
+           }
+    } else if (typeof v === 'object') {
+      valueHtml = `<pre style="white-space:pre-wrap;margin:6px 0;padding:8px;background:#faf6ff;border-radius:8px;border:1px solid #efe7fb;">${esc(JSON.stringify(v, null, 2))}</pre>`;
+    } else {
+      valueHtml = esc(String(v));
+    }
+    extraHtml += `<div class="method-section"><strong>${esc(label)}:</strong> ${valueHtml}</div>`;
+  });
+const id = slugId(title);
+
+return `
+  ${m.image ? `<img src="${esc(m.image)}" alt="${esc(title)}" class="node-card-img">` : ''}
+  <div class="node-card-title" style="font-size:1.1em;">
+    ${esc(title)}
+  </div>
+  <div class="node-card-desc">${esc(shortDesc) || "<em>No description available.</em>"}</div>
+  <div class="method-section" style="margin-top:10px;">
+    <div style="display:flex; gap:8px; align-items:center;">
+      <input type="text" class="method-qa-input" 
+             placeholder="Ask about steps, time, risks, deliverables..." 
+             data-title="${esc(title)}"
+             id="qa-input-${id}"
+             style="flex:1; padding:10px; border-radius:10px; border:1px solid #d9d3ea; background:#fcfaff;">
+      <button class="method-qa-ask" data-title="${esc(title)}" data-target="qa-ans-${id}"
+              style="padding:10px 14px; border-radius:10px; border:none; background:#a287c4; color:#fff; font-weight:700; cursor:pointer;">
+        Ask
+      </button>
+    </div>
+    <div id="qa-ans-${id}" class="qa-answer" style="margin-top:8px; background:#f6f0ff; border:1px solid #e7dbfb; border-radius:10px; padding:10px; display:none;"></div>
+  </div>
+
+    ${m.image ? `<img src="${esc(m.image)}" alt="${esc(title)}" class="node-card-img">` : ''}
+    <div class="node-card-title" style="font-size:1.1em;">${esc(title)}</div>
+    <div class="node-card-desc">${esc(shortDesc) || "<em>No description available.</em>"}</div>
+    ${ longDesc ? `<div class="long-desc"><strong>Description:</strong> ${esc(longDesc)}</div>` : '' }
+    ${
+      stepsIsArray
+        ? (steps.length
+            ? `<div class="method-section"><strong>Key steps</strong><ol style="margin:6px 0 0 18px;">${steps.map(s=>`<li>${esc(s)}</li>`).join('')}</ol></div>`
+            : ''
+          )
+        : (steps ? `<div class="method-section"><strong>Key steps:</strong> ${esc(steps)}</div>` : '')
+    }
+    <div class="method-meta">
+      ${ inputs.length ? `<span class="pill">Inputs: ${inputs.map(esc).join(', ')}</span>` : '' }
+      ${ outputs.length ? `<span class="pill">Outputs: ${outputs.map(esc).join(', ')}</span>` : '' }
+      ${ timeCost ? `<span class="pill">Time: ${esc(timeCost)}</span>` : '' }
+      ${ resourceCost ? `<span class="pill">Resources: ${esc(resourceCost)}</span>` : '' }
+      ${ groupSize ? `<span class="pill">Group: ${esc(groupSize)}</span>` : '' }
+      ${ facilitation !== null ? `<span class="pill">Facilitation: ${esc(facilitation)}</span>` : '' }
+    </div>
+    ${ risks.length ? `<div class="method-section"><strong>Risks / biases:</strong> ${risks.map(esc).join(', ')}</div>` : '' }
+    ${ strengths.length ? `<div class="method-section"><strong>Strengths:</strong> ${strengths.map(esc).join(', ')}</div>` : '' }
+    ${ limitations.length ? `<div class="method-section"><strong>Limitations:</strong> ${limitations.map(esc).join(', ')}</div>` : '' }
+    ${ suitable.length ? `<div class="method-section"><strong>Suitable for:</strong> ${suitable.map(esc).join(', ')}</div>` : '' }
+    ${ prereq.length ? `<div class="method-section"><strong>Prerequisites:</strong> ${prereq.map(esc).join(', ')}</div>` : '' }
+    ${ deliverables.length ? `<div class="method-section"><strong>Deliverables:</strong> ${deliverables.map(esc).join(', ')}</div>` : '' }
+    ${ phaseMembership ? `<div class="method-section"><strong>Phase membership:</strong> ${Object.entries(phaseMembership).map(([k,v])=>`${esc(k)}: ${esc(v)}`).join(', ')}</div>` : '' }
+    ${ keywords.length ? `<div class="method-section"><strong>Keywords:</strong><div class="method-keywords">${keywords.map(k=>`<span class="kw">${esc(k)}</span>`).join('')}</div></div>` : '' }
+    ${ source ? `<div class="method-section"><strong>Source:</strong> <a href="${esc(source)}" target="_blank" style="color:#3b82f6;">${esc(source)}</a></div>` : '' }
+    ${ extraHtml }
+     
+  `;
+  }
+// Add pagination to showRadialMindMap so users can explore more than 9 methods
+async function showRadialMindMap(methodTitle, similar, page = 1, pageSize = 8) {
+  // Remove previous cards/legend and open modal
+  ["graph-legend", "semantic-explanation-box", "orbit-svg", "pagination-bar"].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.remove();
+  });
+  document.querySelectorAll('.node-card').forEach(e => e.remove());
+  document.querySelectorAll('.rel-label.floating').forEach(e => e.remove());
+  document.getElementById("method-graph-modal").style.display = "block";
+
+  // Color map for phases
+  const phaseColors = {
+    problem_framing: "#3b82f6",
+    implementation: "#22c55e",
+    evaluation: "#f59e42",
+    conclusion: "#a855f7"
+  };
+
+  // Build nodes, fetch short_description from data.json
+  const methodData = await getMethodData();
+  function findDesc(title) {
+    const entry = methodData.find(m => m.title === title);
+    return entry ? entry.short_description : '';
+  }
+  // Center node
+  const nodes = [
+    { id: 1, label: methodTitle, image: null, short_description: findDesc(methodTitle), color: "#6a4fa3", phase: "problem_framing" }
+  ];
+  let nid = 2;
+
+  // Use the exact "similar" array as shown in the card for Delphi Method
+  similar.forEach(s => {
+    nodes.push({
+      id: nid,
+      label: s.title,
+      image: s.image || null,
+      short_description: findDesc(s.title),
+      color: phaseColors[s.phase] || "#cfc6e9",
+      phase: s.phase || "problem_framing",
+      score: s.score
+    });
+    nid++;
+  });
+
+  // Pagination logic
+  const totalPages = Math.ceil(similar.length / pageSize);
+  const startIdx = (page - 1) * pageSize;
+  const endIdx = startIdx + pageSize;
+  const pageSimilar = similar.slice(startIdx, endIdx);
+
+  // Find min, max, and median score for the entire similar array (not just page)
+  const allScores = similar.map(s => s.score).filter(s => typeof s === 'number');
+  const maxScore = Math.max(...allScores);
+  const minScore = Math.min(...allScores);
+  let medianScore = minScore;
+  if (allScores.length > 0) {
+    const sorted = [...allScores].sort((a, b) => a - b);
+    const mid = Math.floor(sorted.length / 2);
+    medianScore = sorted.length % 2 === 0
+      ? (sorted[mid - 1] + sorted[mid]) / 2
+      : sorted[mid];
+  }
+
+  // Assign relevance: highest = Highly, median = Relevant, lowest = Less (per card, not per page)
+  const orbitNodes = pageSimilar.map((s, i) => {
+    let _relColor, _relLabel;
+             if (s.score === maxScore) {
+      _relColor = '#22c55e'; // green
+      _relLabel = 'Highly Relevant';
+    } else if (s.score === minScore) {
+      _relColor = '#f59e42'; // orange
+      _relLabel = 'Less Relevant';
+    } else {
+      _relColor = '#3b82f6'; // blue
+      _relLabel = 'Relevant';
+    }
+    return {
+      ...s,
+      _relColor,
+      _relLabel
+    };
+  });
+
+  // Orbit layout math
+  const modal = document.getElementById("method-graph-modal");
+  const centerX = modal.offsetWidth / 2;
+  const centerY = modal.offsetHeight / 2 - 50;
+  const cardWidth = 220;
+  const cardHeight = 80;
+  const orbitDistanceFactor = 0.85;
+  const margin = 0;
+  const maxRadiusX = centerX - cardWidth / 2 - margin;
+  const maxRadiusY = centerY - cardHeight / 2 - margin;
+  const radiusX = Math.max(10, maxRadiusX * orbitDistanceFactor);
+  const radiusY = Math.max(10, maxRadiusY * orbitDistanceFactor);
+  const nCards = pageSimilar.length;
+
+  // Draw SVG lines from center to each card
+  let svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  svg.setAttribute("id", "orbit-svg");
+  svg.style.position = "absolute";
+  svg.style.left = 0;
+  svg.style.top = 0;
+  svg.style.width = "100%";
+  svg.style.height = "100%";
+  svg.style.pointerEvents = "none";
+  modal.appendChild(svg);
+
+  // Center card (main method)
+  const centerCard = document.createElement("div");
+  centerCard.className = "node-card highlight";
+  centerCard.style.position = "absolute";
+  centerCard.style.left = `${centerX}px`;
+  centerCard.style.top = `${centerY}px`;
+  centerCard.style.transform = 'translate(-50%, -50%)';
+  centerCard.style.setProperty('--phase-color', phaseColors[nodes[0].phase] || "#a287c4");
+
+  // find full entry if available and render full details
+  const centerEntry = methodData.find(m => m.title === methodTitle) || { title: methodTitle, short_description: nodes[0].short_description };
+  centerCard.innerHTML = renderMethodDetails(centerEntry, { full: false });
+
+  modal.appendChild(centerCard);
+
+  // Layout orbit cards (same order as "Similar Methods" card)
+  for (let i = 0; i < orbitNodes.length; i++) {
+    // For page 2, arrange lines slanting downward on both sides
+    let angle;
+    if (page > 1 && nCards === 2) {
+      // Two cards: left and right, slanting downward
+      angle = i === 0 ? Math.PI * 0.75 : Math.PI * 0.25;
+    } else if (page > 1 && nCards === 3) {
+      // Three cards: left-down, center-down, right-down
+      angle = [Math.PI * 0.8, Math.PI * 1.0, Math.PI * 0.2][i];
+    } else {
+      // Default: evenly spaced around circle
+      angle = (2 * Math.PI * i) / orbitNodes.length;
+    }
+    const x = centerX + radiusX * Math.cos(angle);
+    const y = centerY + radiusY * Math.sin(angle);
+
+    // Draw line from center to card
+    let line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+    line.setAttribute("x1", centerX);
+    line.setAttribute("y1", centerY);
+    line.setAttribute("x2", x);
+    line.setAttribute("y2", y);
+    line.setAttribute("stroke", "#d7c9eb");
+    line.setAttribute("stroke-width", "2");
+    svg.appendChild(line);
+
+    // Card wrapper
+    const n = orbitNodes[i];
+    const wrapper = document.createElement("div");
+    wrapper.className = "orbit-card-wrapper";
+    wrapper.style.left = `${x}px`;
+    wrapper.style.top = `${y}px`;
+    wrapper.style.position = "absolute";
+
+    // use full entry if available, otherwise n
+    const orbitEntry = methodData.find(m => m.title === n.title) || n;
+
+    // Card
+    const card = document.createElement("div");
+    card.className = "node-card orbit method-compact";
+    card.style.setProperty('--phase-color', n._relColor);
+    card.innerHTML = `
+      ${ renderMethodDetails(orbitEntry, { full: false }) }
+      <div class="rel-label floating" data-rel="${n._relLabel}">${n._relLabel}</div>
+      <div style="margin-top:6px;">
+        <label><input type="checkbox" class="compare-checkbox" data-title="${n.title}" /> Compare</label>
+      </div>
+    `;
+
+    // Make the entire card clickable (left area / card) to open the method in chat
+    card.style.cursor = 'pointer';
+    card.onclick = (e) => {
+      // don't trigger when clicking the checkbox, buttons (Explore), or selecting text
+      const target = e.target;
+      if (target && (
+          target.tagName === 'INPUT' ||
+          target.tagName === 'BUTTON' ||
+          target.closest('.compare-checkbox') ||
+          target.closest('.fav-remove-btn') ||
+          target.closest('.explore-btn')
+        )) {
+        return;
+      }
+      e.stopPropagation();
+      closeModal(); // close popup first
+      sendMethod(n.title);
+      // Scroll chat to bottom after method is sent
+      scrollToLastMessageStart(); 
+    };
+
+    wrapper.appendChild(card);
+    modal.appendChild(wrapper);
+
+    // wire explore button separately (kept as the single handler for the button)
+    setTimeout(() => {
+      const btn = card.querySelector('.explore-btn');
+      if (btn) btn.onclick = (e) => {
+        e.stopPropagation();
+        closeModal(); // Close the popup before sending the method
+        sendMethod(n.title);
+      };
+    }, 0);
+  }
+document.addEventListener('click', async (e) => {
+  const btn = e.target.closest('.method-qa-ask');
+  if (!btn) return;
+
+  const title = btn.dataset.title;
+  const targetId = btn.dataset.target;
+  const input = btn.parentElement.querySelector('.method-qa-input');
+  if (!input) return;
+
+  const question = input.value.trim();
+  if (!question) return;
+
+  await ensureMethodIndex();
+  const method = methodsByTitle[title.trim().toLowerCase()];
+  const html = answerAboutMethod(method, question);
+
+  const ansBox = document.getElementById(targetId);
+  if (ansBox) {
+    ansBox.innerHTML = html;
+    ansBox.style.display = 'block';
+  }
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter') return;
+  const input = e.target.closest('.method-qa-input');
+  if (!input) return;
+  const btn = input.parentElement.querySelector('.method-qa-ask');
+  if (btn) btn.click();
+});
+
+  // Delegated handler: toggle compact -> full details for server-rendered method cards
+  document.addEventListener("click", function(e) {
+    const btn = e.target.closest(".see-more-btn");
+    if (!btn) return;
+    const card = btn.closest(".method-card");
+    if (!card) return;
+    const full = card.querySelector(".method-card-full");
+    if (!full) return;
+
+    const isHidden = window.getComputedStyle(full).display === "none";
+    if (isHidden) {
+      full.style.display = "block";
+      btn.textContent = "See less";
+      // scroll the top of the revealed full block into view
+      try { full.scrollIntoView({ behavior: "smooth", block: "start" }); } catch (err) { /* ignore */ }
+    } else {
+      full.style.display = "none";
+      btn.textContent = "See more";
+      try { card.scrollIntoView({ behavior: "smooth", block: "start" }); } catch (err) { /* ignore */ }
+    }
+    e.stopPropagation();
+  });
+
+  // Pagination bar (move right to avoid legend)
+  let paginationBar = document.getElementById("pagination-bar");
+  if (paginationBar) paginationBar.remove();
+  paginationBar = document.createElement("div");
+  paginationBar.id = "pagination-bar";
+  paginationBar.style.position = "absolute";
+  paginationBar.style.right = "160px";
+  paginationBar.style.bottom = "20px";
+  paginationBar.style.transform = "none";
+  paginationBar.style.display = "flex";
+  paginationBar.style.gap = "10px";
+  paginationBar.style.justifyContent = "flex-end";
+  paginationBar.style.alignItems = "center";
+  paginationBar.style.zIndex = "100";
+  paginationBar.innerHTML = `
+    <button class="graph-button" ${page === 1 ? "disabled" : ""} style="padding:8px 22px;min-width:70px;" id="prev-page-btn">
+      &#8592; Prev
+    </button>
+    <span style="font-size:16px;font-weight:600;color:#6a4fa3;padding:0 18px;">
+      Page <span style="color:#3b82f6;">${page}</span> of <span style="color:#3b82f6;">${totalPages}</span>
+    </span>
+    <button class="graph-button" ${page === totalPages ? "disabled" : ""} style="padding:8px 22px;min-width:70px;" id="next-page-btn">
+      Next &#8594;
+    </button>
+  `;
+  modal.appendChild(paginationBar);
+
+  setTimeout(() => {
+    const prevBtn = document.getElementById("prev-page-btn");
+    const nextBtn = document.getElementById("next-page-btn");
+    if (prevBtn) prevBtn.onclick = () => showRadialMindMap(methodTitle, similar, page - 1, pageSize);
+    if (nextBtn) nextBtn.onclick = () => showRadialMindMap(methodTitle, similar, page + 1, pageSize);
+  }, 0);
+
+  // Remove legend (do not create or update it)
+  // let legend = document.getElementById("graph-legend");
+  // if (!legend) {
+  //   legend = document.createElement("div");
+  //   legend.id = "graph-legend";
+  //   modal.appendChild(legend);
+  // }
+  // legend.innerHTML = `
+  //   <strong>Legend</strong><br>
+  //   • Orbit cards = methods<br>
+  //   • Click a card to expand<br>
+  //   • Card color = relevance<br>
+  //   • Green = Highly Relevant<br>
+  //   • Blue = Relevant<br>
+  //   • Orange = Less Relevant
+  // `;
+
+  // Compare logic
+  // remove dynamic creation of compareBtn and insertion — rely on DOM button with id="compare-methods-btn"
+  // Update the modal's checkboxes to enable/disable the existing button
+ 
+
+
+ 
+
+ 
+  setTimeout(() => {
+    const compareBtnDom = document.getElementById("compare-methods-btn");
+    function updateCompareBtnGlobal() {
+      // Count only checkboxes inside the currently-open modal to avoid interference from other pages
+      const modalEl = document.getElementById('method-graph-modal');
+      const checked = modalEl ? modalEl.querySelectorAll('.compare-checkbox:checked') : [];
+      if (compareBtnDom) compareBtnDom.style.display = checked.length >= 2 ? "inline-block" : "none";
+    }
+    // wire each checkbox (within this modal instance)
+    modal.querySelectorAll('.compare-checkbox').forEach(cb => {
+      cb.onchange = updateCompareBtnGlobal;
+    });
+    // initial update
+    updateCompareBtnGlobal();
+  }, 0);
+
+  // Add to recent methods dock
+  let _methodData = window.methodDataCache;
+  if (!_methodData) _methodData = await getMethodData();
+  function findPhase(title) {
+    const entry = _methodData.find(m => m.title === title);
+    return entry ? entry.phase : 'problem_framing';
+  }
+  addRecentMethod({ title: methodTitle, phase: findPhase(methodTitle) });
+}
+  /* ------------------------------ small UI helpers ------------------------------- */
+  function toggleExpand(el) {
+    const content = el.nextElementSibling;
+    content.style.display = content.style.display === "block" ? "none" : "block";
+    el.textContent = content.style.display === "block" ? "Hide steps" : "Learn more...";
+  }
+  function toggleInnerExpand(el) {
+    const details = el.nextElementSibling;
+    details.style.display = details.style.display === "block" ? "none" : "block";
+    el.textContent = details.style.display === "block" ? "Hide extra info" : "More info...";
+  }
+
+  // --- Recently viewed methods dock logic ---
+  const phaseColors = {
+    problem_framing: "#3b82f6",
+    implementation: "#22c55e",
+   
+   
+    evaluation: "#f59e42",
+    conclusion: "#a855f7"
+  };
+  let recentMethods = [];
+  function addRecentMethod(method) {
+    // method: {title, phase}
+    if (!method || !method.title) return;
+    recentMethods = recentMethods.filter(m => m.title !== method.title);
+    // Add to front
+    recentMethods.unshift({ title: method.title, phase: method.phase });
+    // Max 5
+    if (recentMethods.length > 5) recentMethods = recentMethods.slice(0, 5);
+    renderRecentMethodsDock();
+  }
+  function renderRecentMethodsDock() {
+    const dock = document.getElementById('recent-methods-dock');
+    const label = document.getElementById('recent-methods-label');
+    if (!dock) return;
+    dock.innerHTML = '';
+    if (recentMethods.length === 0) {
+      dock.style.display = 'none';
+      if (label) label.style.display = 'none';
+      return;
+    }
+    dock.style.display = 'flex';
+    if (label) label.style.display = 'block';
+
+    // Use a muted lavender color for all chips
+    const lavenderColor = "#c2b2e1";
+
+    recentMethods.forEach((m, idx) => {
+      const chip = document.createElement('div');
+      chip.className = 'recent-method_chip';
+      chip.style.background = lavenderColor;
+      chip.style.border = `2px solid #bdbdbd`;
+      chip.style.color = "#4e3c73";
+      chip.style.position = 'relative';
+      chip.style.marginRight = '8px';
+      chip.innerHTML = `
+        <span style="font-size:18px;vertical-align:middle;margin-right:7px;">
+          <span style="color:#7c5bb3;">★</span>
+        </span>
+        <span class="chip-title" style="font-weight:600;">${m.title}</span>
+      `;
+      chip.title = m.title;
+      chip.onclick = () => sendMethod(m.title);
+      dock.appendChild(chip);
+    });
+  }
+
+  renderRecentMethodsDock();
+
+</script>
 </body>
 </html>

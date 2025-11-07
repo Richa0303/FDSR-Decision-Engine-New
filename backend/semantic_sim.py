@@ -3,8 +3,9 @@ import numpy as np
 import json
 
 def load_methods():
-    with open("data.json", "r") as f:
-        return json.load(f)
+    with open("data.json", "r", encoding="utf-8") as f:
+        data = json.load(f)
+
 
 def build_embeddings(methods_data):
     titles = [m["title"] for m in methods_data]

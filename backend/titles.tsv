@@ -1,0 +1,40 @@
+qid	query	type	seed	k	gold
+T01	Delphi Method	TITLE	Delphi Method	5	Delphi Method
+T02	Design Thinking	TITLE	Design Thinking	5	Design Thinking
+T03	Actor Constellation	TITLE	Actor Constellation	5	Actor Constellation
+T04	Emancipatory Boundary Critique	TITLE	Emancipatory Boundary Critique	5	Emancipatory Boundary Critique
+T05	Most Significant Change (MSC) Technique	TITLE	Most Significant Change (MSC) Technique	5	Most Significant Change (MSC) Technique
+T06	Functional-dynamic stakeholder involvement	TITLE	Functional-dynamic stakeholder involvement	5	Functional-dynamic stakeholder involvement
+T07	Give-and-take matrix	TITLE	Give-and-take matrix	5	Give-and-take matrix
+T08	Multi-Stakeholder Discussion Group	TITLE	Multi-Stakeholder Discussion Group	5	Multi-Stakeholder Discussion Group
+T09	Nomadic concepts	TITLE	Nomadic concepts	5	Nomadic concepts
+T10	Outcome spaces framework	TITLE	Outcome spaces framework	5	Outcome spaces framework
+T11	Research Marketplace	TITLE	Research Marketplace	5	Research Marketplace
+T12	Scenario Planning	TITLE	Scenario Planning	5	Scenario Planning
+T13	Soft systems methodology	TITLE	Soft systems methodology	5	Soft systems methodology
+T14	Storywall	TITLE	Storywall	5	Storywall
+T15	Toolbox dialogue approach	TITLE	Toolbox dialogue approach	5	Toolbox dialogue approach
+T16	Tell Your Story by Means of an Object	TITLE	Tell Your Story by Means of an Object	5	Tell Your Story by Means of an Object
+T17	Context and Actor Analysis	TITLE	Context and Actor Analysis	5	Context and Actor Analysis
+T18	But Why Technique	TITLE	But Why Technique	5	But Why Technique
+T19	COLLAB Game	TITLE	COLLAB Game	5	COLLAB Game
+T20	Evaluation H	TITLE	Evaluation H	5	Evaluation H
+T21	Idea Tree	TITLE	Idea Tree	5	Idea Tree
+T22	Joint Fact Finding	TITLE	Joint Fact Finding	5	Joint Fact Finding
+T23	NetMap	TITLE	NetMap	5	NetMap
+T24	Rich Picture	TITLE	Rich Picture	5	Rich Picture
+T25	Risk & Equity Matrix	TITLE	Risk & Equity Matrix	5	Risk & Equity Matrix
+T26	3 Circle Model for Actor Constellations	TITLE	3 Circle Model for Actor Constellations	5	3 Circle Model for Actor Constellations
+T27	Theory of change	TITLE	Theory of change	5	Theory of change
+T28	Three types of knowledge tool	TITLE	Three types of knowledge tool	5	Three types of knowledge tool
+T29	After Action Review	TITLE	After Action Review	5	After Action Review
+T30	Group Reflection	TITLE	Group Reflection	5	Group Reflection
+T31	Outcome Harvesting	TITLE	Outcome Harvesting	5	Outcome Harvesting
+T32	Learning History	TITLE	Learning History	5	Learning History
+T33	Process Mapping (Retrospective)	TITLE	Process Mapping (Retrospective)	5	Process Mapping (Retrospective)
+T34	Evaluation Matrix	TITLE	Evaluation Matrix	5	Evaluation Matrix
+FZ1	soft sytems methdology steps	FUZZY	Soft systems methodology		#
+FZ2	msc technique outcomes	FUZZY	Most Significant Change (MSC) Technique		#
+FZ3	collab game method	FUZZY	COLLAB Game		#
+FZ4	net map stakeholders	FUZZY	NetMap		#
+FZ5	3 circle model actor constellation	FUZZY	3 Circle Model for Actor Constellations		#

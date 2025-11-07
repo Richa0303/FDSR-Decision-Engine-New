@@ -1,0 +1,25 @@
+[
+  { "query": "What are the best ways to begin a design project?", "expected_phase": "problem_framing" },
+  { "query": "How do I identify key stakeholders?", "expected_phase": "problem_framing" },
+  { "query": "Which methods help with early stage exploration?", "expected_phase": "problem_framing" },
+  { "query": "How to frame the core challenge in a project?", "expected_phase": "problem_framing" },
+  { "query": "What is a good method to understand the problem?", "expected_phase": "problem_framing" },
+
+  { "query": "How do I implement a solution?", "expected_phase": "implementation" },
+  { "query": "Which tools help build prototypes?", "expected_phase": "implementation" },
+  { "query": "How can I test my intervention in real life?", "expected_phase": "implementation" },
+  { "query": "How to operationalize an idea?", "expected_phase": "implementation" },
+  { "query": "What methods help execute the plan?", "expected_phase": "implementation" },
+
+  { "query": "How do I evaluate impact?", "expected_phase": "evaluation" },
+  { "query": "Which methods help assess success?", "expected_phase": "evaluation" },
+  { "query": "What techniques give user feedback?", "expected_phase": "evaluation" },
+  { "query": "How can I validate the results?", "expected_phase": "evaluation" },
+  { "query": "How to know what worked and what didn’t?", "expected_phase": "evaluation" },
+
+  { "query": "How do I wrap up a project?", "expected_phase": "conclusion" },
+  { "query": "What are the methods to reflect on learning?", "expected_phase": "conclusion" },
+  { "query": "How to summarize findings?", "expected_phase": "conclusion" },
+  { "query": "What tools help document project outcomes?", "expected_phase": "conclusion" },
+  { "query": "How do I conclude and report my results?", "expected_phase": "conclusion" }
+]

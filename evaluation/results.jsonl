@@ -1,0 +1,129 @@
+{"i": 1, "id": "QID", "query": "query", "result": {"route": "phase_pills", "n_buttons": 0, "has_card": false, "latency_ms": 57.6, "html_len": 696}}
+{"i": 2, "id": "T01", "query": "Delphi Method", "result": {"route": "direct_method_card", "n_buttons": 10, "has_card": true, "latency_ms": 67.6, "html_len": 11079}}
+{"i": 3, "id": "T02", "query": "Design Thinking", "result": {"route": "direct_method_card", "n_buttons": 10, "has_card": true, "latency_ms": 189.9, "html_len": 14248}}
+{"i": 4, "id": "T03", "query": "Actor Constellation", "result": {"route": "direct_method_card", "n_buttons": 10, "has_card": true, "latency_ms": 86.9, "html_len": 11059}}
+{"i": 5, "id": "T04", "query": "Emancipatory Boundary Critique", "result": {"route": "direct_method_card", "n_buttons": 10, "has_card": true, "latency_ms": 173.9, "html_len": 12378}}
+{"i": 6, "id": "T05", "query": "Most Significant Change (MSC) Technique", "result": {"route": "direct_method_card", "n_buttons": 10, "has_card": true, "latency_ms": 94.8, "html_len": 11991}}
+{"i": 7, "id": "T06", "query": "Functional-dynamic stakeholder involvement", "result": {"route": "direct_method_card", "n_buttons": 10, "has_card": true, "latency_ms": 190.2, "html_len": 14989}}
+{"i": 8, "id": "T07", "query": "Give-and-take matrix", "result": {"route": "direct_method_card", "n_buttons": 10, "has_card": true, "latency_ms": 113.9, "html_len": 12305}}
+{"i": 9, "id": "T08", "query": "Multi-Stakeholder Discussion Group", "result": {"route": "direct_method_card", "n_buttons": 10, "has_card": true, "latency_ms": 44.4, "html_len": 9090}}
+{"i": 10, "id": "T09", "query": "Nomadic concepts", "result": {"route": "direct_method_card", "n_buttons": 10, "has_card": true, "latency_ms": 127.8, "html_len": 14064}}
+{"i": 11, "id": "T10", "query": "Outcome spaces framework", "result": {"route": "direct_method_card", "n_buttons": 10, "has_card": true, "latency_ms": 140.7, "html_len": 13378}}
+{"i": 12, "id": "T11", "query": "Research Marketplace", "result": {"route": "direct_method_card", "n_buttons": 10, "has_card": true, "latency_ms": 89.9, "html_len": 10532}}
+{"i": 13, "id": "T12", "query": "Scenario Planning", "result": {"route": "direct_method_card", "n_buttons": 10, "has_card": true, "latency_ms": 44.9, "html_len": 7473}}
+{"i": 14, "id": "T13", "query": "Soft systems methodology", "result": {"route": "direct_method_card", "n_buttons": 10, "has_card": true, "latency_ms": 169.8, "html_len": 12462}}
+{"i": 15, "id": "T14", "query": "Storywall", "result": {"route": "direct_method_card", "n_buttons": 10, "has_card": true, "latency_ms": 114.6, "html_len": 10768}}
+{"i": 16, "id": "T15", "query": "Toolbox dialogue approach", "result": {"route": "direct_method_card", "n_buttons": 10, "has_card": true, "latency_ms": 69.0, "html_len": 10628}}
+{"i": 17, "id": "T16", "query": "Tell Your Story by Means of an Object", "result": {"route": "direct_method_card", "n_buttons": 10, "has_card": true, "latency_ms": 67.7, "html_len": 7512}}
+{"i": 18, "id": "T17", "query": "Context and Actor Analysis", "result": {"route": "direct_method_card", "n_buttons": 10, "has_card": true, "latency_ms": 39.5, "html_len": 7368}}
+{"i": 19, "id": "T18", "query": "But Why Technique", "result": {"route": "direct_method_card", "n_buttons": 10, "has_card": true, "latency_ms": 36.6, "html_len": 7448}}
+{"i": 20, "id": "T19", "query": "COLLAB Game", "result": {"route": "direct_method_card", "n_buttons": 10, "has_card": true, "latency_ms": 63.1, "html_len": 7249}}
+{"i": 21, "id": "T20", "query": "Evaluation H", "result": {"route": "direct_method_card", "n_buttons": 10, "has_card": true, "latency_ms": 46.7, "html_len": 7103}}
+{"i": 22, "id": "T21", "query": "Idea Tree", "result": {"route": "direct_method_card", "n_buttons": 10, "has_card": true, "latency_ms": 52.9, "html_len": 7456}}
+{"i": 23, "id": "T22", "query": "Joint Fact Finding", "result": {"route": "direct_method_card", "n_buttons": 10, "has_card": true, "latency_ms": 58.3, "html_len": 7425}}
+{"i": 24, "id": "T23", "query": "NetMap", "result": {"route": "direct_method_card", "n_buttons": 10, "has_card": true, "latency_ms": 31.9, "html_len": 7315}}
+{"i": 25, "id": "T24", "query": "Rich Picture", "result": {"route": "direct_method_card", "n_buttons": 10, "has_card": true, "latency_ms": 54.9, "html_len": 7217}}
+{"i": 26, "id": "T25", "query": "Risk & Equity Matrix", "result": {"route": "direct_method_card", "n_buttons": 10, "has_card": true, "latency_ms": 59.5, "html_len": 7394}}
+{"i": 27, "id": "T26", "query": "3 Circle Model for Actor Constellations", "result": {"route": "direct_method_card", "n_buttons": 10, "has_card": true, "latency_ms": 41.7, "html_len": 7398}}
+{"i": 28, "id": "T27", "query": "Theory of change", "result": {"route": "direct_method_card", "n_buttons": 10, "has_card": true, "latency_ms": 142.8, "html_len": 15129}}
+{"i": 29, "id": "Q01", "query": "what is Delphi Method", "result": {"route": "context_qa", "n_buttons": 0, "has_card": false, "latency_ms": 5.9, "html_len": 1191}}
+{"i": 30, "id": "Q02", "query": "steps for Design Thinking", "result": {"route": "context_qa", "n_buttons": 0, "has_card": false, "latency_ms": 17.6, "html_len": 4121}}
+{"i": 31, "id": "Q03", "query": "time and resources for Actor Constellation", "result": {"route": "context_qa", "n_buttons": 0, "has_card": false, "latency_ms": 4.5, "html_len": 816}}
+{"i": 32, "id": "Q04", "query": "outputs and deliverables of Emancipatory Boundary Critique", "result": {"route": "context_qa", "n_buttons": 0, "has_card": false, "latency_ms": 15.3, "html_len": 992}}
+{"i": 33, "id": "Q05", "query": "risks and limitations of Most Significant Change (MSC) Technique", "result": {"route": "context_qa", "n_buttons": 0, "has_card": false, "latency_ms": 8.5, "html_len": 729}}
+{"i": 34, "id": "Q06", "query": "prerequisites for Soft systems methodology", "result": {"route": "context_qa", "n_buttons": 0, "has_card": false, "latency_ms": 7.1, "html_len": 1165}}
+{"i": 35, "id": "Q07", "query": "when to use Scenario Planning", "result": {"route": "unknown", "n_buttons": 0, "has_card": false, "latency_ms": 3.4, "html_len": 150}}
+{"i": 36, "id": "Q08", "query": "who participates in Toolbox dialogue approach", "result": {"route": "context_qa", "n_buttons": 0, "has_card": false, "latency_ms": 2.5, "html_len": 713}}
+{"i": 37, "id": "Q09", "query": "keywords for Rich Picture", "result": {"route": "context_qa", "n_buttons": 0, "has_card": false, "latency_ms": 23.1, "html_len": 464}}
+{"i": 38, "id": "Q10", "query": "which phase for Outcome spaces framework", "result": {"route": "context_qa", "n_buttons": 0, "has_card": false, "latency_ms": 17.1, "html_len": 474}}
+{"i": 39, "id": "Q11", "query": "source for Joint Fact Finding", "result": {"route": "context_qa", "n_buttons": 0, "has_card": false, "latency_ms": 23.2, "html_len": 526}}
+{"i": 40, "id": "L01", "query": "what methods do you recommend to frame a problem?", "result": {"route": "buttons_only", "n_buttons": 72, "has_card": false, "latency_ms": 3.6, "html_len": 7827}}
+{"i": 41, "id": "L02", "query": "suggest methods to evaluate a prototype", "result": {"route": "phase_suggestions", "n_buttons": 16, "has_card": false, "latency_ms": 20.4, "html_len": 1728}}
+{"i": 42, "id": "P01", "query": "problem_framing", "result": {"route": "list_suggestions_or_semantic", "n_buttons": 26, "has_card": false, "latency_ms": 5.6, "html_len": 3131}}
+{"i": 43, "id": "P02", "query": "implementation", "result": {"route": "list_suggestions_or_semantic", "n_buttons": 23, "has_card": false, "latency_ms": 8.4, "html_len": 2782}}
+{"i": 44, "id": "P03", "query": "evaluation", "result": {"route": "list_suggestions_or_semantic", "n_buttons": 16, "has_card": false, "latency_ms": 4.9, "html_len": 2002}}
+{"i": 45, "id": "P04", "query": "conclusion", "result": {"route": "list_suggestions_or_semantic", "n_buttons": 7, "has_card": false, "latency_ms": 8.8, "html_len": 1071}}
+{"i": 46, "id": "S01", "query": "how do I start a design project?", "result": {"route": "buttons_only", "n_buttons": 12, "has_card": false, "latency_ms": 230.7, "html_len": 1761}}
+{"i": 47, "id": "S02", "query": "finish up the project: what to do at the end?", "result": {"route": "buttons_only", "n_buttons": 12, "has_card": false, "latency_ms": 58.1, "html_len": 1479}}
+{"i": 48, "id": "FZ1", "query": "soft sytems methdology steps", "result": {"route": "context_qa", "n_buttons": 0, "has_card": false, "latency_ms": 30.2, "html_len": 2995}}
+{"i": 49, "id": "SML01", "query": "similar to Delphi Method", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 87.6, "html_len": 788}}
+{"i": 50, "id": "ALT01", "query": "alternatives to Delphi Method", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 100.4, "html_len": 788}}
+{"i": 51, "id": "REL01", "query": "related to Delphi Method", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 90.6, "html_len": 788}}
+{"i": 52, "id": "SML02", "query": "similar to Design Thinking", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 210.2, "html_len": 768}}
+{"i": 53, "id": "ALT02", "query": "alternatives to Design Thinking", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 258.0, "html_len": 768}}
+{"i": 54, "id": "REL02", "query": "related to Design Thinking", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 237.5, "html_len": 768}}
+{"i": 55, "id": "SML03", "query": "similar to Actor Constellation", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 123.3, "html_len": 782}}
+{"i": 56, "id": "ALT03", "query": "alternatives to Actor Constellation", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 140.5, "html_len": 782}}
+{"i": 57, "id": "REL03", "query": "related to Actor Constellation", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 163.4, "html_len": 782}}
+{"i": 58, "id": "SML04", "query": "similar to Emancipatory Boundary Critique", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 194.8, "html_len": 747}}
+{"i": 59, "id": "ALT04", "query": "alternatives to Emancipatory Boundary Critique", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 243.4, "html_len": 747}}
+{"i": 60, "id": "REL04", "query": "related to Emancipatory Boundary Critique", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 193.7, "html_len": 747}}
+{"i": 61, "id": "SML05", "query": "similar to Most Significant Change (MSC) Technique", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 125.3, "html_len": 708}}
+{"i": 62, "id": "ALT05", "query": "alternatives to Most Significant Change (MSC) Technique", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 125.0, "html_len": 708}}
+{"i": 63, "id": "REL05", "query": "related to Most Significant Change (MSC) Technique", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 112.8, "html_len": 708}}
+{"i": 64, "id": "SML06", "query": "similar to Functional-dynamic stakeholder involvement", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 184.6, "html_len": 737}}
+{"i": 65, "id": "ALT06", "query": "alternatives to Functional-dynamic stakeholder involvement", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 179.7, "html_len": 737}}
+{"i": 66, "id": "REL06", "query": "related to Functional-dynamic stakeholder involvement", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 179.1, "html_len": 737}}
+{"i": 67, "id": "SML07", "query": "similar to Give-and-take matrix", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 128.8, "html_len": 779}}
+{"i": 68, "id": "ALT07", "query": "alternatives to Give-and-take matrix", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 99.9, "html_len": 779}}
+{"i": 69, "id": "REL07", "query": "related to Give-and-take matrix", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 130.3, "html_len": 779}}
+{"i": 70, "id": "SML08", "query": "similar to Multi-Stakeholder Discussion Group", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 40.0, "html_len": 725}}
+{"i": 71, "id": "ALT08", "query": "alternatives to Multi-Stakeholder Discussion Group", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 39.7, "html_len": 725}}
+{"i": 72, "id": "REL08", "query": "related to Multi-Stakeholder Discussion Group", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 60.4, "html_len": 725}}
+{"i": 73, "id": "SML09", "query": "similar to Nomadic concepts", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 166.1, "html_len": 785}}
+{"i": 74, "id": "ALT09", "query": "alternatives to Nomadic concepts", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 179.9, "html_len": 785}}
+{"i": 75, "id": "REL09", "query": "related to Nomadic concepts", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 170.0, "html_len": 785}}
+{"i": 76, "id": "SML10", "query": "similar to Outcome spaces framework", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 162.3, "html_len": 763}}
+{"i": 77, "id": "ALT10", "query": "alternatives to Outcome spaces framework", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 145.6, "html_len": 763}}
+{"i": 78, "id": "REL10", "query": "related to Outcome spaces framework", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 152.3, "html_len": 763}}
+{"i": 79, "id": "SML11", "query": "similar to Research Marketplace", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 83.3, "html_len": 789}}
+{"i": 80, "id": "ALT11", "query": "alternatives to Research Marketplace", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 112.4, "html_len": 789}}
+{"i": 81, "id": "REL11", "query": "related to Research Marketplace", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 115.5, "html_len": 789}}
+{"i": 82, "id": "SML12", "query": "similar to Scenario Planning", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 68.7, "html_len": 742}}
+{"i": 83, "id": "ALT12", "query": "alternatives to Scenario Planning", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 69.7, "html_len": 742}}
+{"i": 84, "id": "REL12", "query": "related to Scenario Planning", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 58.4, "html_len": 742}}
+{"i": 85, "id": "SML13", "query": "similar to Soft systems methodology", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 228.5, "html_len": 763}}
+{"i": 86, "id": "ALT13", "query": "alternatives to Soft systems methodology", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 187.7, "html_len": 763}}
+{"i": 87, "id": "REL13", "query": "related to Soft systems methodology", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 182.0, "html_len": 763}}
+{"i": 88, "id": "SML14", "query": "similar to Storywall", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 126.2, "html_len": 752}}
+{"i": 89, "id": "ALT14", "query": "alternatives to Storywall", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 113.8, "html_len": 752}}
+{"i": 90, "id": "REL14", "query": "related to Storywall", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 99.8, "html_len": 752}}
+{"i": 91, "id": "SML15", "query": "similar to Toolbox dialogue approach", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 100.0, "html_len": 768}}
+{"i": 92, "id": "ALT15", "query": "alternatives to Toolbox dialogue approach", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 68.0, "html_len": 768}}
+{"i": 93, "id": "REL15", "query": "related to Toolbox dialogue approach", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 79.9, "html_len": 768}}
+{"i": 94, "id": "SML16", "query": "similar to Tell Your Story by Means of an Object", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 75.0, "html_len": 676}}
+{"i": 95, "id": "ALT16", "query": "alternatives to Tell Your Story by Means of an Object", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 47.5, "html_len": 676}}
+{"i": 96, "id": "REL16", "query": "related to Tell Your Story by Means of an Object", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 57.5, "html_len": 676}}
+{"i": 97, "id": "SML17", "query": "similar to Context and Actor Analysis", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 42.6, "html_len": 723}}
+{"i": 98, "id": "ALT17", "query": "alternatives to Context and Actor Analysis", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 49.9, "html_len": 723}}
+{"i": 99, "id": "REL17", "query": "related to Context and Actor Analysis", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 50.1, "html_len": 723}}
+{"i": 100, "id": "SML18", "query": "similar to But Why Technique", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 40.3, "html_len": 760}}
+{"i": 101, "id": "ALT18", "query": "alternatives to But Why Technique", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 37.1, "html_len": 760}}
+{"i": 102, "id": "REL18", "query": "related to But Why Technique", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 59.5, "html_len": 760}}
+{"i": 103, "id": "SML19", "query": "similar to COLLAB Game", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 39.9, "html_len": 762}}
+{"i": 104, "id": "ALT19", "query": "alternatives to COLLAB Game", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 34.7, "html_len": 762}}
+{"i": 105, "id": "REL19", "query": "related to COLLAB Game", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 46.8, "html_len": 762}}
+{"i": 106, "id": "SML20", "query": "similar to Evaluation H", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 53.6, "html_len": 701}}
+{"i": 107, "id": "ALT20", "query": "alternatives to Evaluation H", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 40.1, "html_len": 701}}
+{"i": 108, "id": "REL20", "query": "related to Evaluation H", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 65.5, "html_len": 701}}
+{"i": 109, "id": "SML21", "query": "similar to Idea Tree", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 43.4, "html_len": 772}}
+{"i": 110, "id": "ALT21", "query": "alternatives to Idea Tree", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 40.4, "html_len": 772}}
+{"i": 111, "id": "REL21", "query": "related to Idea Tree", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 45.5, "html_len": 772}}
+{"i": 112, "id": "SML22", "query": "similar to Joint Fact Finding", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 69.9, "html_len": 753}}
+{"i": 113, "id": "ALT22", "query": "alternatives to Joint Fact Finding", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 39.8, "html_len": 753}}
+{"i": 114, "id": "REL22", "query": "related to Joint Fact Finding", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 37.0, "html_len": 753}}
+{"i": 115, "id": "SML23", "query": "similar to NetMap", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 50.0, "html_len": 769}}
+{"i": 116, "id": "ALT23", "query": "alternatives to NetMap", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 50.0, "html_len": 769}}
+{"i": 117, "id": "REL23", "query": "related to NetMap", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 46.8, "html_len": 769}}
+{"i": 118, "id": "SML24", "query": "similar to Rich Picture", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 54.2, "html_len": 719}}
+{"i": 119, "id": "ALT24", "query": "alternatives to Rich Picture", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 55.0, "html_len": 719}}
+{"i": 120, "id": "REL24", "query": "related to Rich Picture", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 40.0, "html_len": 719}}
+{"i": 121, "id": "SML25", "query": "similar to Risk & Equity Matrix", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 50.1, "html_len": 669}}
+{"i": 122, "id": "ALT25", "query": "alternatives to Risk & Equity Matrix", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 65.2, "html_len": 669}}
+{"i": 123, "id": "REL25", "query": "related to Risk & Equity Matrix", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 61.2, "html_len": 669}}
+{"i": 124, "id": "SML26", "query": "similar to 3 Circle Model for Actor Constellations", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 34.4, "html_len": 706}}
+{"i": 125, "id": "ALT26", "query": "alternatives to 3 Circle Model for Actor Constellations", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 57.1, "html_len": 706}}
+{"i": 126, "id": "REL26", "query": "related to 3 Circle Model for Actor Constellations", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 42.8, "html_len": 706}}
+{"i": 127, "id": "SML27", "query": "similar to Theory of change", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 177.0, "html_len": 719}}
+{"i": 128, "id": "ALT27", "query": "alternatives to Theory of change", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 159.7, "html_len": 719}}
+{"i": 129, "id": "REL27", "query": "related to Theory of change", "result": {"route": "similar_list", "n_buttons": 6, "has_card": false, "latency_ms": 158.6, "html_len": 719}}
